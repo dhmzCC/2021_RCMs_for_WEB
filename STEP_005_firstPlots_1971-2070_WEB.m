@@ -44,8 +44,9 @@ FUTA=17;
 for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
             models=importdata(['./models_RCP',RCPtxt{RCP},'.txt']);
             nMOD=size(models,1);
-            for STT=[1:3] ;     %-->Cres, Zadar, Vela Luka
-            for VAR=[1:2] ;     %-->tas, pr
+            %for STT=[1:22] ; 
+            for STT=1;
+            for VAR=[ 1:2] ;     %-->tas, pr
             
 
             %--------------------------------->
@@ -58,7 +59,7 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                 %------------------------
                 % READ MODEL DATA
                 %------------------------
-        	      filename=['../FROM_ESGF_UKV_HIST_RCP',RCPtxt{RCP},'/STATION_',num2str(STT),'_',VARtxt{VAR},'_EUR-11_',models{MOD},'_mon_HISTincluded_1971-2070.nc'];
+        	      filename=['./FROM_ESGF_WEB_HIST_RCP',RCPtxt{RCP},'/STATION_',num2str(STT),'_',VARtxt{VAR},'_EUR-11_',models{MOD},'_mon_HISTincluded_1971-2070.nc'];
 	              model_MMYYYY=squeeze(ncread(filename,VARtxt{VAR}));
 
                 %------------------------
@@ -77,13 +78,6 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                             model_P2=mean(   model_P2);
                 
                 %------------------------
-                % READ OBS DATA
-                %------------------------
-        	      filename=['./DIR_DHMZ_mjerenja/DHMZ_',VARtxtDHMZ{VAR},'_',LOCtxt{STT},'_HIDRO0.txt'];
-	              obs  =load(filename);                            %---> 1981-2010 mean: 12 numbers
-		      obs=obs(1,:);
-
-                %------------------------
                 % UNITS CHANGE
                 %------------------------
                     % tas: K -> deg C
@@ -99,61 +93,19 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                         model_P2    =    model_P2*24*60*60.*[31 28 31 30 31 30 31 31 30 31 30 31]; 
                     end
 
-                %------------------------
-                % BIAS CORRECTION: DETERMINE COEFFICIENTS
-                %------------------------
-	              if (VAR==1); delta(STT,MOD,RCP,:)=obs -model_HIDRO0; end
-        	      if (VAR==2); epsil(STT,MOD,RCP,:)=obs./model_HIDRO0; end
                 
                 %------------------------
-                % BIAS CORRECTION: APPLY ON THE ORIGINAL TIMESERIES
+                % SAVE TXT TIMESERIES
                 %------------------------
                     if (VAR==1)
-                                        BC=squeeze(delta(STT,MOD,RCP,:))'; % simplify
-                                        BC=repmat(BC,1,100)';              % 1971.-2070. > 100 years
-                        model_MMYYYY_BC=BC+model_MMYYYY;
-                        filename=['STATION_',num2str(STT),'_MOD_',num2str(MOD),'_RCP',num2str(RCP),'_VAR',num2str(VAR),'.txt'];
-                        clear zapis; zapis=model_MMYYYY_BC-273.15;
+                        filename=['STATION_',num2str(STT),'_MOD_',num2str(MOD),'_RCP',num2str(RCP),'_VAR',num2str(VAR),'_ORIG.txt'];
+                        clear zapis; zapis=model_MMYYYY-273.15;
                         save(filename,'-ascii','zapis');
                     end
                     if (VAR==2)
-                                        BC=squeeze(epsil(STT,MOD,RCP,:))'; % simplify
-                                        BC=repmat(BC,1,100)';              % 1971.-2070. > 100 years
-                        model_MMYYYY_BC=BC.*model_MMYYYY;
-                        filename=['STATION_',num2str(STT),'_MOD_',num2str(MOD),'_RCP',num2str(RCP),'_VAR',num2str(VAR),'.txt'];
-                        clear zapis; zapis=model_MMYYYY_BC*24*60*60.*repmat([31 28 31 30 31 30 31 31 30 31 30 31]',100,1);
+                        filename=['STATION_',num2str(STT),'_MOD_',num2str(MOD),'_RCP',num2str(RCP),'_VAR',num2str(VAR),'_ORIG.txt'];
+                        clear zapis; zapis=model_MMYYYY*24*60*60.*repmat([31 28 31 30 31 30 31 31 30 31 30 31]',100,1);
                         save(filename,'-ascii','zapis');
-                    end
-
-                %------------------------
-                % COMPUTE MODEL HIDRO0 climatology (1981-2010 mean); also P1 (2011-2040)&P2(2041-2070): BC
-                %------------------------
-                    model_HIDRO0_BC=model_MMYYYY_BC(120+1:120+12*30)';      %---> 1981-2010
-                    model_HIDRO0_BC=reshape(model_HIDRO0_BC,12,30)';
-                    model_HIDRO0_BC=mean(   model_HIDRO0_BC);
-
-                        model_P1_BC=model_MMYYYY_BC(480+1:480+12*30)';      %---> 2011-2040
-                        model_P1_BC=reshape(model_P1_BC,12,30)';
-                        model_P1_BC=mean(   model_P1_BC);
-
-                            model_P2_BC=model_MMYYYY_BC(840+1:840+12*30)';  %---> 2041-2070
-                            model_P2_BC=reshape(model_P2_BC,12,30)';
-                            model_P2_BC=mean(   model_P2_BC);
-
-                %------------------------
-                % UNITS CHANGE: BC
-                %------------------------
-                    % tas: K -> deg C
-                    % pr : kg / m2 /s -> mm (ignoring leap years, 360 calendar)
-                    if (VAR==1); 
-                        model_HIDRO0_BC=model_HIDRO0_BC-273.15; 
-                        model_P1_BC=        model_P1_BC-273.15; 
-                        model_P2_BC=        model_P2_BC-273.15; 
-                    end
-                    if (VAR==2); %assumption: 365 calendar
-                        model_HIDRO0_BC=model_HIDRO0_BC*24*60*60.*[31 28 31 30 31 30 31 31 30 31 30 31]; 
-                        model_P1_BC=        model_P1_BC*24*60*60.*[31 28 31 30 31 30 31 31 30 31 30 31]; 
-                        model_P2_BC=        model_P2_BC*24*60*60.*[31 28 31 30 31 30 31 31 30 31 30 31]; 
                     end
 
                 %------------------------
@@ -162,40 +114,35 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                 fig=figure(STT+VAR*10); set(gcf,'Position',[0 0 1500 500]);
                 subplot(1,3,RCP);
                         if (VAR==1); %mean annual mean temperature
-                            plot(mean(model_P1)-mean(model_HIDRO0),mean(model_P1_BC)-mean(model_HIDRO0_BC),'b o'); hold on
-                            plot(mean(model_P2)-mean(model_HIDRO0),mean(model_P2_BC)-mean(model_HIDRO0_BC),'r s'); hold on
+                            plot(MOD,mean(model_P1)-mean(model_HIDRO0),'b o'); hold on
+                            plot(MOD,mean(model_P2)-mean(model_HIDRO0),'r s'); hold on
                         end
                         if (VAR==2); %mean annual precipitation amount
-                            plot(12*mean(model_P1)-12*mean(model_HIDRO0),12*mean(model_P1_BC)-12*mean(model_HIDRO0_BC),'b o'); hold on
-                            plot(12*mean(model_P2)-12*mean(model_HIDRO0),12*mean(model_P2_BC)-12*mean(model_HIDRO0_BC),'r s'); hold on
+                            plot(MOD,12*mean(model_P1)-12*mean(model_HIDRO0),'b o'); hold on
+                            plot(MOD,12*mean(model_P2)-12*mean(model_HIDRO0),'r s'); hold on
                         end
                         if (VAR==1); 
-                                xlim([-2 6]); 
+                                %xlim([-2 6]); 
                                 ylim([-2 6]);          
-                                if (MOD==1); 
-                                    plot([-2 6],[-2 6],'k-'); hold on; 
-                                end
+                                %if (MOD==1); 
+                                %    plot([-2 6],[-2 6],'k-'); hold on; 
+                                %end
                         end
                         if (VAR==2); 
-                                xlim(12*[-20 50]); 
+                                %xlim(12*[-20 50]); 
                                 ylim(12*[-20 50]);          
-                                if (MOD==1); 
-                                    plot(12*[-20 50],12*[-20 50],'k-'); hold on; 
-                                end
+                                %if (MOD==1); 
+                                %    plot(12*[-20 50],12*[-20 50],'k-'); hold on; 
+                                %end
                         end
                         if (MOD==1)
-%                                xlabel(['RCM original: mean annual ',VARtxtWITHunits{VAR}],'Fontsize',FUTA);
-%                                ylabel(['RCM BC      : mean annual ',VARtxtWITHunits{VAR}],'Fontsize',FUTA);
-                                xlabel(['RCM original: godisnji srednjak ',VARtxtWITHunits{VAR}],'Fontsize',FUTA);
-                                ylabel(['RCM BC      : godisnji srednjak ',VARtxtWITHunits{VAR}],'Fontsize',FUTA);
+                                ylabel(['RCM original: godisnji srednjak ',VARtxtWITHunits{VAR}],'Fontsize',FUTA);
                                 title([LOCtxt{STT},' RCP',RCPtxt{RCP},' PX-HIRDO0'],'Fontsize',14);
                                 legend('P1-HIDRO0','P2-HIDRO0','Location','west');
-                                grid off
-                                axis equal
                         end
                         
                         if (MOD<nMOD+1);
-                            niz_za_analizu=[niz_za_analizu; mean(model_P2_BC)-mean(model_HIDRO0_BC)];
+                            niz_za_analizu=[niz_za_analizu; mean(model_P2)-mean(model_HIDRO0)];
                         end
                         if (MOD==nMOD);
                             if (VAR==1)
@@ -226,47 +173,40 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                 fig=figure(STT+VAR*10+100); set(gcf,'Position',[0 0 1500 500]);
                     if (VAR==1)
                         niz_OG=mean(reshape(model_MMYYYY   ,12,100));
-                        niz_BC=mean(reshape(model_MMYYYY_BC,12,100));
                     end
                     if (VAR==2)
                         niz_OG=mean(reshape(model_MMYYYY   ,12,100));
-                        niz_BC=mean(reshape(model_MMYYYY_BC,12,100));
                     end
                     if (VAR==2);
                         niz_OG=niz_OG*24*60*60*365;
-                        niz_BC=niz_BC*24*60*60*365; 
                     end
                         A_OG=polyfit([1:100],niz_OG,1);
-                        A_BC=polyfit([1:100],niz_BC,1);
 
                 subplot(1,3,RCP)
-                    plot(A_OG(1)*10,A_BC(1)*10,'r s'); hold on
+                    plot(MOD,A_OG(1)*10,'r s'); hold on
                         if (VAR==1); 
-                                 xlim([-0.1 0.6]); 
+                                 %xlim([-0.1 0.6]); 
                                  ylim([-0.1 0.6]);          
-                                 if (MOD==1); 
-                                     plot([-0.1 0.6],[-0.1 0.6],'k-'); hold on; 
-                                 end
+                                 %if (MOD==1); 
+                                 %    plot([-0.1 0.6],[-0.1 0.6],'k-'); hold on; 
+                                 %end
                         end
                         if (VAR==2); 
-                                 xlim([-50 120]); 
+                                 %xlim([-50 120]); 
                                  ylim([-50 120]);          
-                                 if (MOD==1); 
-                                     plot([-50 120],[-50 120],'k-'); hold on; 
-                                 end
+                                 %if (MOD==1); 
+                                 %    plot([-50 120],[-50 120],'k-'); hold on; 
+                                 %end
                         end
                         if (MOD==1)
-%                                xlabel(['RCM original: trend of mean annual ',VARtxtWITHunits{VAR},'/10yr'],'Fontsize',FUTA);
-%                                ylabel(['RCM BC: trend of mean annual ',VARtxtWITHunits{VAR},'/10yr'],'Fontsize',FUTA);
-                                xlabel(['RCM original: trend godisnje ',VARtxtWITHunits{VAR},'/10god'],'Fontsize',FUTA);
-                                ylabel(['RCM BC: trend godisnje ',VARtxtWITHunits{VAR},'/10god'],'Fontsize',FUTA);
+                                ylabel(['RCM original: trend godisnje ',VARtxtWITHunits{VAR},'/10god'],'Fontsize',FUTA);
                                 title([LOCtxt{STT},' RCP',RCPtxt{RCP},' trendovi'],'Fontsize',14);
                                 grid off
                                 axis equal
                         end
 
                         if (MOD<nMOD+1);
-                            niz_za_analizu_trenda=[niz_za_analizu_trenda; A_BC(1)*10];
+                            niz_za_analizu_trenda=[niz_za_analizu_trenda; A_OG(1)*10];
                         end
                         if (MOD==nMOD);
                             data_summary(1)= nanmin(niz_za_analizu_trenda);
