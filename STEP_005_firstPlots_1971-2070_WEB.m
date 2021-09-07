@@ -6,22 +6,40 @@ tic
 pkg load netcdf
 pkg load statistics
 
-VARtxt{1}='tas';   VARtxtDHMZ{1}='temp';    VARtxtWITHunits{1}='t (deg C)'; 
-VARtxt{2}='pr';    VARtxtDHMZ{2}='oborina'; VARtxtWITHunits{2}='R (mm)';    
+VARtxt{1}='tas';   VARtxtWITHunits{1}='t (deg C)'; 
+VARtxt{2}='pr';    VARtxtWITHunits{2}='R (mm)';    
 
-LOCtxt{1}='Cres';
-LOCtxt{2}='Zadar';
-LOCtxt{3}='VelaLuka';
+LOCtxt{ 1}='Zagreb';
+LOCtxt{ 2}='Krapina';
+LOCtxt{ 3}='Sisak';
+LOCtxt{ 4}='Karlovac';
+LOCtxt{ 5}='Varazdin';
+LOCtxt{ 6}='Koprivnica';
+LOCtxt{ 7}='Bjelovar';
+LOCtxt{ 8}='Rijeka';
+LOCtxt{ 9}='Gospic';
+LOCtxt{10}='Virovitica';
+LOCtxt{11}='Pozega';
+LOCtxt{12}='Slavonski Brod';
+LOCtxt{13}='Zadar';
+LOCtxt{14}='Osijek';
+LOCtxt{15}='Sibenik';
+LOCtxt{16}='Vukovar';
+LOCtxt{17}='Split';
+LOCtxt{18}='Pazin';
+LOCtxt{19}='Dubrovnik';
+LOCtxt{20}='Cakovec';
+LOCtxt{21}='Djurdjenovac';
+LOCtxt{22}='Nasice';
 
 RCPtxt{1}='26';
 RCPtxt{2}='45';
 RCPtxt{3}='85';
 
-delta=nan(3,39,3,12); %3 stations, max RCP models+4 DHMZ, 3 RCPs, 12 months); %<-- Hardcoded
-epsil=nan(3,39,3,12);
+delta=nan(22,39,3,12); %3 stations, max RCP models+4 DHMZ, 3 RCPs, 12 months); %<-- Hardcoded
+epsil=nan(22,39,3,12);
 
 FUTA=17;
-
 
 for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
             models=importdata(['./models_RCP',RCPtxt{RCP},'.txt']);
