@@ -36,17 +36,14 @@ RCPtxt{1}='26';
 RCPtxt{2}='45';
 RCPtxt{3}='85';
 
-delta=nan(22,39,3,12); %3 stations, max RCP models+4 DHMZ, 3 RCPs, 12 months); %<-- Hardcoded
-epsil=nan(22,39,3,12);
-
 FUTA=17;
 
 for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
             models=importdata(['./models_RCP',RCPtxt{RCP},'.txt']);
             nMOD=size(models,1);
             %for STT=[1:22] ; 
-            for STT=1;
-            for VAR=[ 1:2] ;     %-->tas, pr
+            for STT=[1:10];
+            for VAR=[1:2] ;     %-->tas, pr
             
 
             %--------------------------------->
@@ -156,9 +153,9 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                                 data_summary(3)=12*nanmax(niz_za_analizu);
                             end
 
-                            text(0.4,0.30,[' maks(P2-HIDRO0)=',num2str(round(data_summary(3)*10)/10)],'units','normalized','Fontsize',FUTA-4);
-                            text(0.4,0.25,['srednj(P2-HIDRO0)=',num2str(round(data_summary(2)*10)/10)],'units','normalized','Fontsize',FUTA-4);
-                            text(0.4,0.20,[' min(P2-HIDRO0)=',num2str(round(data_summary(1)*10)/10)],'units','normalized','Fontsize',FUTA-4);
+text(0.4,0.30,[' maks(P2-HIDRO0)=',num2str(round(data_summary(3)*10)/10)],'units','normalized','Fontsize',FUTA-4);
+text(0.4,0.25,['srednj(P2-HIDRO0)=',num2str(round(data_summary(2)*10)/10)],'units','normalized','Fontsize',FUTA-4);
+text(0.4,0.20,[' min(P2-HIDRO0)=',num2str(round(data_summary(1)*10)/10)],'units','normalized','Fontsize',FUTA-4);
                         end
 			set(gca,'Fontsize',FUTA);
 			
@@ -183,7 +180,9 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                         A_OG=polyfit([1:100],niz_OG,1);
 
                 subplot(1,3,RCP)
-                    plot(MOD,A_OG(1)*10,'r s'); hold on
+
+                    clear ivan; ivan=A_OG(1)*10;
+                    plot(MOD,ivan,'o r'); hold on
                         if (VAR==1); 
                                  %xlim([-0.1 0.6]); 
                                  ylim([-0.1 0.6]);          
@@ -213,9 +212,9 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                             data_summary(2)=nanmean(niz_za_analizu_trenda);
                             data_summary(3)= nanmax(niz_za_analizu_trenda);
 
-                            text(0.4,0.30,[' maks. trend=',num2str(round(data_summary(3)*100)/100)],'units','normalized','Fontsize',FUTA-4);
-                            text(0.4,0.25,['srednj. trend=',num2str(round(data_summary(2)*100)/100)],'units','normalized','Fontsize',FUTA-4);
-                            text(0.4,0.20,[' min. trend=',num2str(round(data_summary(1)*100)/100)],'units','normalized','Fontsize',FUTA-4);
+text(0.4,0.30,[' maks. trend=',num2str(round(data_summary(3)*100)/100)],'units','normalized','Fontsize',FUTA-4);
+text(0.4,0.25,['srednj. trend=',num2str(round(data_summary(2)*100)/100)],'units','normalized','Fontsize',FUTA-4);
+text(0.4,0.20,[' min. trend=',num2str(round(data_summary(1)*100)/100)],'units','normalized','Fontsize',FUTA-4);
                         end
 			set(gca,'Fontsize',FUTA);
 
