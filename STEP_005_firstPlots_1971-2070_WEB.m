@@ -1,4 +1,3 @@
-
 clear all; close all; clc
 
 tic
@@ -6,7 +5,7 @@ tic
 pkg load netcdf
 pkg load statistics
 
-VARtxt{1}='tas';   VARtxtWITHunits{1}='t (deg C)'; 
+VARtxt{1}='tas';   VARtxtWITHunits{1}='t (st. C)'; 
 VARtxt{2}='pr';    VARtxtWITHunits{2}='R (mm)';    
 
 LOCtxt{ 1}='Zagreb';
@@ -20,7 +19,7 @@ LOCtxt{ 8}='Rijeka';
 LOCtxt{ 9}='Gospic';
 LOCtxt{10}='Virovitica';
 LOCtxt{11}='Pozega';
-LOCtxt{12}='Slavonski Brod';
+LOCtxt{12}='SlavonskiBrod';
 LOCtxt{13}='Zadar';
 LOCtxt{14}='Osijek';
 LOCtxt{15}='Sibenik';
@@ -38,12 +37,14 @@ RCPtxt{3}='85';
 
 FUTA=17;
 
-for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
+%for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
+for RCP=3;
             models=importdata(['./models_RCP',RCPtxt{RCP},'.txt']);
             nMOD=size(models,1);
-            %for STT=[1:22] ; 
-            for STT=[1:10];
-            for VAR=[1:2] ;     %-->tas, pr
+            %for STT=[1:22];
+            %for VAR=[1:2] ;     %-->tas, pr
+            for STT=2;
+            for VAR=2;
             
 
             %--------------------------------->
@@ -90,7 +91,6 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                         model_P2    =    model_P2*24*60*60.*[31 28 31 30 31 30 31 31 30 31 30 31]; 
                     end
 
-                
                 %------------------------
                 % SAVE TXT TIMESERIES
                 %------------------------
@@ -107,8 +107,7 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
 
                 %------------------------
                 % PLOTS: P2-HIDRO0, P1-HIDRO0
-                %------------------------
-                fig=figure(STT+VAR*10); set(gcf,'Position',[0 0 1500 500]);
+                %---figure(STT+VAR*100); set(gcf,'Position',[0 0 1500 500]);
                 subplot(1,3,RCP);
                         if (VAR==1); %mean annual mean temperature
                             plot(MOD,mean(model_P1)-mean(model_HIDRO0),'b o'); hold on
@@ -134,8 +133,8 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                         end
                         if (MOD==1)
                                 ylabel(['RCM original: godisnji srednjak ',VARtxtWITHunits{VAR}],'Fontsize',FUTA);
-                                title([LOCtxt{STT},' RCP',RCPtxt{RCP},' PX-HIRDO0'],'Fontsize',14);
-                                legend('P1-HIDRO0','P2-HIDRO0','Location','west');
+                                title([LOCtxt{STT},' RCP',RCPtxt{RCP}],'Fontsize',14);
+                                legend('P1-HIDRO0','P2-HIDRO0','Location','northwest');
                         end
                         
                         if (MOD<nMOD+1);
@@ -153,73 +152,14 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                                 data_summary(3)=12*nanmax(niz_za_analizu);
                             end
 
-text(0.4,0.30,[' maks(P2-HIDRO0)=',num2str(round(data_summary(3)*10)/10)],'units','normalized','Fontsize',FUTA-4);
-text(0.4,0.25,['srednj(P2-HIDRO0)=',num2str(round(data_summary(2)*10)/10)],'units','normalized','Fontsize',FUTA-4);
-text(0.4,0.20,[' min(P2-HIDRO0)=',num2str(round(data_summary(1)*10)/10)],'units','normalized','Fontsize',FUTA-4);
+text(0.4,0.80,[' maksimum(P2-P0)=',num2str(round(data_summary(3)*10)/10)],'units','normalized','Fontsize',FUTA-4);
+text(0.4,0.75,[' srednjak(P2-P0)=',num2str(round(data_summary(2)*10)/10)],'units','normalized','Fontsize',FUTA-4);
+text(0.4,0.70,['  minimum(P2-P0)=',num2str(round(data_summary(1)*10)/10)],'units','normalized','Fontsize',FUTA-4);
                         end
 			set(gca,'Fontsize',FUTA);
 			
                         if ((RCP==3)&&(MOD==nMOD));
                                 filenamePNG=[LOCtxt{STT},'_',VARtxt{VAR},'_PXvsHIDRO0.png'];
-                                print(fig,filenamePNG,'-dpng','-S1500,500');
-                        end
-
-                %------------------------
-                % PLOTS: trends
-                %------------------------
-                fig=figure(STT+VAR*10+100); set(gcf,'Position',[0 0 1500 500]);
-                    if (VAR==1)
-                        niz_OG=mean(reshape(model_MMYYYY   ,12,100));
-                    end
-                    if (VAR==2)
-                        niz_OG=mean(reshape(model_MMYYYY   ,12,100));
-                    end
-                    if (VAR==2);
-                        niz_OG=niz_OG*24*60*60*365;
-                    end
-                        A_OG=polyfit([1:100],niz_OG,1);
-
-                subplot(1,3,RCP)
-
-                    clear ivan; ivan=A_OG(1)*10;
-                    plot(MOD,ivan,'o r'); hold on
-                        if (VAR==1); 
-                                 %xlim([-0.1 0.6]); 
-                                 ylim([-0.1 0.6]);          
-                                 %if (MOD==1); 
-                                 %    plot([-0.1 0.6],[-0.1 0.6],'k-'); hold on; 
-                                 %end
-                        end
-                        if (VAR==2); 
-                                 %xlim([-50 120]); 
-                                 ylim([-50 120]);          
-                                 %if (MOD==1); 
-                                 %    plot([-50 120],[-50 120],'k-'); hold on; 
-                                 %end
-                        end
-                        if (MOD==1)
-                                ylabel(['RCM original: trend godisnje ',VARtxtWITHunits{VAR},'/10god'],'Fontsize',FUTA);
-                                title([LOCtxt{STT},' RCP',RCPtxt{RCP},' trendovi'],'Fontsize',14);
-                                grid off
-                                axis equal
-                        end
-
-                        if (MOD<nMOD+1);
-                            niz_za_analizu_trenda=[niz_za_analizu_trenda; A_OG(1)*10];
-                        end
-                        if (MOD==nMOD);
-                            data_summary(1)= nanmin(niz_za_analizu_trenda);
-                            data_summary(2)=nanmean(niz_za_analizu_trenda);
-                            data_summary(3)= nanmax(niz_za_analizu_trenda);
-
-text(0.4,0.30,[' maks. trend=',num2str(round(data_summary(3)*100)/100)],'units','normalized','Fontsize',FUTA-4);
-text(0.4,0.25,['srednj. trend=',num2str(round(data_summary(2)*100)/100)],'units','normalized','Fontsize',FUTA-4);
-text(0.4,0.20,[' min. trend=',num2str(round(data_summary(1)*100)/100)],'units','normalized','Fontsize',FUTA-4);
-                        end
-			set(gca,'Fontsize',FUTA);
-
-                        if ((RCP==3)&&(MOD==nMOD));
-                                filenamePNG=[LOCtxt{STT},'_',VARtxt{VAR},'_trend_HIDRO0.png'];
                                 print(fig,filenamePNG,'-dpng','-S1500,500');
                         end
 

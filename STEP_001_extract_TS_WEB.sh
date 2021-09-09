@@ -5,9 +5,7 @@
 DIRIN=/media/ivan/MyBook/BACKUP_IG_202009/bonus/FROM_ESGF_UKV
 DIROT=/home/ivan/DIR_WORK/DIR_WEB/FROM_ESGF_WEB_TimeSeries
 
-
 #---------------------------------------------------------------------------------
-
 
 #Izvor koordinate: Google
 LON[ 1]=15.9819 ; LAT[ 1]=45.8150   #Zagreb
@@ -41,7 +39,8 @@ LON[22]=18.0951 ; LAT[22]=45.4947   #Nasice
 
 
 cd ${DIRIN}
-FILES=$(ls *.nc);
+#FILES=$(ls *.nc);
+FILES=$(ls *historical*ETH*.nc); #fix
 cd -
 
 for F in ${FILES}; do
