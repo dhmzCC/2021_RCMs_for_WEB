@@ -37,16 +37,12 @@ RCPtxt{3}='85';
 
 FUTA=17;
 
-%for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
-for RCP=3;
+for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
             models=importdata(['./models_RCP',RCPtxt{RCP},'.txt']);
             nMOD=size(models,1);
-            %for STT=[1:22];
-            %for VAR=[1:2] ;     %-->tas, pr
-            for STT=2;
-            for VAR=2;
+            for STT=[1:22];
+            for VAR=[1:2] ;     %-->tas, pr
             
-
             %--------------------------------->
             niz_za_analizu       =NaN;
             niz_za_analizu_trenda=NaN;
@@ -107,7 +103,8 @@ for RCP=3;
 
                 %------------------------
                 % PLOTS: P2-HIDRO0, P1-HIDRO0
-                %---figure(STT+VAR*100); set(gcf,'Position',[0 0 1500 500]);
+                %------------------------
+                figure(STT+VAR*100); set(gcf,'Position',[0 0 1500 500]);
                 subplot(1,3,RCP);
                         if (VAR==1); %mean annual mean temperature
                             plot(MOD,mean(model_P1)-mean(model_HIDRO0),'b o'); hold on
@@ -118,15 +115,15 @@ for RCP=3;
                             plot(MOD,12*mean(model_P2)-12*mean(model_HIDRO0),'r s'); hold on
                         end
                         if (VAR==1); 
-                                %xlim([-2 6]); 
                                 ylim([-2 6]);          
+                                %xlim([-2 6]); 
                                 %if (MOD==1); 
                                 %    plot([-2 6],[-2 6],'k-'); hold on; 
                                 %end
                         end
                         if (VAR==2); 
-                                %xlim(12*[-20 50]); 
                                 ylim(12*[-20 50]);          
+                                %xlim(12*[-20 50]); 
                                 %if (MOD==1); 
                                 %    plot(12*[-20 50],12*[-20 50],'k-'); hold on; 
                                 %end
@@ -140,6 +137,7 @@ for RCP=3;
                         if (MOD<nMOD+1);
                             niz_za_analizu=[niz_za_analizu; mean(model_P2)-mean(model_HIDRO0)];
                         end
+
                         if (MOD==nMOD);
                             if (VAR==1)
                                 data_summary(1)= nanmin(niz_za_analizu);
@@ -152,10 +150,11 @@ for RCP=3;
                                 data_summary(3)=12*nanmax(niz_za_analizu);
                             end
 
-text(0.4,0.80,[' maksimum(P2-P0)=',num2str(round(data_summary(3)*10)/10)],'units','normalized','Fontsize',FUTA-4);
-text(0.4,0.75,[' srednjak(P2-P0)=',num2str(round(data_summary(2)*10)/10)],'units','normalized','Fontsize',FUTA-4);
-text(0.4,0.70,['  minimum(P2-P0)=',num2str(round(data_summary(1)*10)/10)],'units','normalized','Fontsize',FUTA-4);
+                            text(0.4,0.80,[' maksimum(P2-P0)=',num2str(round(data_summary(3)*10)/10)],'units','normalized','Fontsize',FUTA-4);
+                            text(0.4,0.75,[' srednjak(P2-P0)=',num2str(round(data_summary(2)*10)/10)],'units','normalized','Fontsize',FUTA-4);
+                            text(0.4,0.70,['  minimum(P2-P0)=',num2str(round(data_summary(1)*10)/10)],'units','normalized','Fontsize',FUTA-4);
                         end
+
 			set(gca,'Fontsize',FUTA);
 			
                         if ((RCP==3)&&(MOD==nMOD));
