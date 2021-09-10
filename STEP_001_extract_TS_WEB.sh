@@ -39,8 +39,7 @@ LON[22]=18.0951 ; LAT[22]=45.4947   #Nasice
 
 
 cd ${DIRIN}
-#FILES=$(ls *.nc);
-FILES=$(ls pr*MPI*rcp85*CLMcom*.nc); #fix
+FILES=$(ls *.nc);
 cd -
 
 for F in ${FILES}; do

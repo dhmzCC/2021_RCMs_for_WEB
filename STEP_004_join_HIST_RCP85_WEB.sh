@@ -18,5 +18,3 @@ mapfile -t myArray_RCP85 < models_RCP85.txt
     done #variable
     done #station
     done #model
-
-

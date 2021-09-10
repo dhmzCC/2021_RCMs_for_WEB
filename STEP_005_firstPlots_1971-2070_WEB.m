@@ -104,7 +104,7 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                 %------------------------
                 % PLOTS: P2-HIDRO0, P1-HIDRO0
                 %------------------------
-                figure(STT+VAR*100); set(gcf,'Position',[0 0 1500 500]);
+                fig=figure(STT+VAR*100); set(gcf,'Position',[0 0 1500 500]);
                 subplot(1,3,RCP);
                         if (VAR==1); %mean annual mean temperature
                             plot(MOD,mean(model_P1)-mean(model_HIDRO0),'b o'); hold on
