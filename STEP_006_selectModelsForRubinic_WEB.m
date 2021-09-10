@@ -3,10 +3,8 @@ clear all; close all; clc
 tic
 
 racun            =1;                %STATUS: OK
-crtanje_YEAR     =0;                %STATUS: OK
-crtanje_MULTIYEAR=1;                %STATUS: ...
-crtanje_MULTIYEAR_JOINED       =0;  %STATUS
-crtanje_MULTIYEAR_JOINED_TEXTED=0;  %STATUS
+crtanje_YEAR     =1;                %STATUS: OK
+crtanje_MULTIYEAR=1;                %STATUS: OK
 FUTA=16;
 
 %------------------------------------------------------------------------------
@@ -120,8 +118,7 @@ end %crtanje
 
 if (crtanje_MULTIYEAR==1);
 
-%for S=[1:22];
-  for S=[1];
+  for S=[1:22];
   for R=[1:3];
   fig=figure(100+S); set(gcf,'Position',[1    472   1440    437]);
   for M=[1:M_R(R)];
@@ -158,96 +155,10 @@ if (crtanje_MULTIYEAR==1);
 
   end
   filenamePNG=['STATION_',num2str(S),'_MeanChange.png'];
-  print(fig,filenamePNG,'-dpng','-S1000,500');
+  print(fig,filenamePNG,'-dpng','-S1400,400');
 end
 end
 
 end %crtanje MULTIYEAR
-
-%------------------------------------------------------------------------------
-
-if (crtanje_MULTIYEAR_JOINED==1)
-
-  fig=figure(2000); %everyting raw
-    set(gcf,'Position',[360 233 859 723]);
-
-    for S=[1:22];
-    for R=[1:3];
-    for M=[1:M_R(R)];
-    subplot(3,3,(S-1)*3+R)
-        plot(v2_diff_MULTIYEAR{S,R,M},v1_diff_MULTIYEAR{S,R,M},'o r'); hold on
-            if ((R==1)&(M==14))
-                plot(v2_diff_MULTIYEAR{S,R,M},v1_diff_MULTIYEAR{S,R,M},'x k'); hold on
-            end
-            if ((R==2)&(M>18))
-                plot(v2_diff_MULTIYEAR{S,R,M},v1_diff_MULTIYEAR{S,R,M},'x k'); hold on
-            end
-            if ((R==3)&(M>35))
-                plot(v2_diff_MULTIYEAR{S,R,M},v1_diff_MULTIYEAR{S,R,M},'x k'); hold on
-            end
-
-            ylim([-1     4]);
-            xlim([-200 700]);
-            title([LOCtxt{S},' RCP',RCPtxt{R},' N:',num2str(M_R(R))]);
-            ylabel('delta t (degC)');
-            xlabel('delta R (mm)')
-		set(gca,'Fontsize',FUTA)
-
-    end
-    end
-    end
- filenamePNG=['STATION_1-3_MeanChange.png'];
- print(fig,filenamePNG,'-dpng','-S750,750');
-
-end %crtanja MULTIYEAR_JOINED
-
-%------------------------------------------------------------------------------
-
-if (crtanje_MULTIYEAR_JOINED_TEXTED==1)
-
-  fig=figure(3000); %everyting raw
-    set(gcf,'Position',[360 233 859 723]);
-
-    for S=[1:22];
-    for R=[1:3];
-    for M=[1:M_R(R)];
-    subplot(3,3,(S-1)*3+R)
-        plot(v2_diff_MULTIYEAR{S,R,M},v1_diff_MULTIYEAR{S,R,M},'. r');      hold on
-        text(v2_diff_MULTIYEAR{S,R,M},v1_diff_MULTIYEAR{S,R,M},num2str(M));
-
-            if ((R==1)&(M==14))
-                plot(v2_diff_MULTIYEAR{S,R,M},v1_diff_MULTIYEAR{S,R,M},'x k'); hold on
-            end
-            if ((R==2)&(M>18))
-                plot(v2_diff_MULTIYEAR{S,R,M},v1_diff_MULTIYEAR{S,R,M},'x k'); hold on
-            end
-            if ((R==3)&(M>35))
-                plot(v2_diff_MULTIYEAR{S,R,M},v1_diff_MULTIYEAR{S,R,M},'x k'); hold on
-            end
-
-            ylim([-1     4]);
-            xlim([-200 700]);
-            title([LOCtxt{S},' RCP',RCPtxt{R},' N:',num2str(M_R(R))]);
-            ylabel('delta t (degC)');
-            xlabel('delta R (mm)')
-		set(gca,'Fontsize',FUTA)
-
-            %-----> colorize
-            if (R==1)&((M==14)|(M==10)|(M== 3));
-                      ttt=text(v2_diff_MULTIYEAR{S,R,M},v1_diff_MULTIYEAR{S,R,M},num2str(M)); set(ttt,'color','green');
-            end
-            if (R==2)&((M==19)|(M== 9)|(M== 7));
-                      ttt=text(v2_diff_MULTIYEAR{S,R,M},v1_diff_MULTIYEAR{S,R,M},num2str(M)); set(ttt,'color','green');
-            end
-            if (R==3)&((M==22)|(M== 9)|(M==11));
-                      ttt=text(v2_diff_MULTIYEAR{S,R,M},v1_diff_MULTIYEAR{S,R,M},num2str(M)); set(ttt,'color','green');
-            end
-    end
-    end
-    end
- filenamePNG=['STATION_1-3_MeanChange_TEXTED.png'];
- print(fig,filenamePNG,'-dpng','-S750,750');
-
-end %crtanja MULTIYEAR_JOINED
 
 toc
