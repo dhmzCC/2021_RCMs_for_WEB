@@ -59,18 +59,18 @@ for M=[1:M_R(R)];
 
   %--------> P0 and P2 MULTI-ANNUAL means
   clear temp; temp=v1_YEAR{S,R,M};
-                   v1_MULTIYEAR_H{S,R,M}=mean(temp(11:40));                     %1981-2010
-                   v1_MULTIYEAR_F{S,R,M}=mean(temp(71:100));                    %2041-2070
+                   v1_MULTIYEAR_H{S,R,M}   =mean(temp(11:40));                     %1981-2010
+                   v1_MULTIYEAR_F{S,R,M}   =mean(temp(71:100));                    %2041-2070
                    v1_diff_MULTIYEAR{S,R,M}=v1_MULTIYEAR_F{S,R,M}-v1_MULTIYEAR_H{S,R,M};
 
   clear temp; temp=v2_YEAR{S,R,M};
-                   v2_MULTIYEAR_H{S,R,M}=mean(temp(11:40));                     %1981-2010
-                   v2_MULTIYEAR_F{S,R,M}=mean(temp(71:100));                    %2041-2070
-                   v2_diff_MULTIYEAR{S,R,M}=v2_MULTIYEAR_F{S,R,M}-v2_MULTIYEAR_H{S,R,M};
+                   v2_MULTIYEAR_H{S,R,M}   =mean(temp(11:40));                     %1981-2010
+                   v2_MULTIYEAR_F{S,R,M}   =mean(temp(71:100));                    %2041-2070
+                   v2_diff_MULTIYEAR{S,R,M}=v2_MULTIYEAR_F{S,R,M}./v2_MULTIYEAR_H{S,R,M};
 
 end
   %--------> statistics
-                            a=[v1_diff_MULTIYEAR{S,R,1:M_R(R)}];
+                                    a=[v1_diff_MULTIYEAR{S,R,1:M_R(R)}];
                 v1_STAT(S,R,1)= max(a);
                 v1_STAT(S,R,2)=mean(a);
                 v1_STAT(S,R,3)= min(a);
@@ -78,10 +78,7 @@ end
                 v1_STAT(S,R,5)=prctile(a,50);
                 v1_STAT(S,R,6)=prctile(a,25);
 
-                v1_STAT_model(S,R,1)=find(a==v1_STAT(S,R,1));
-                v1_STAT_model(S,R,3)=find(a==v1_STAT(S,R,3));
-
-                             a=[v2_diff_MULTIYEAR{S,R,1:M_R(R)}];
+                                    a=[v2_diff_MULTIYEAR{S,R,1:M_R(R)}];
                 v2_STAT(S,R,1)= max(a);
                 v2_STAT(S,R,2)=mean(a);
                 v2_STAT(S,R,3)= min(a);
@@ -89,8 +86,6 @@ end
                 v2_STAT(S,R,5)=prctile(a,50);
                 v2_STAT(S,R,6)=prctile(a,25);
 
-                v2_STAT_model(S,R,1)=find(a==v2_STAT(S,R,1));
-                v2_STAT_model(S,R,3)=find(a==v2_STAT(S,R,3));
 
 end
 end
@@ -125,56 +120,45 @@ end %crtanje
 
 if (crtanje_MULTIYEAR==1);
 
-for S=[1:22];
-for R=[1:3];
-  fig=figure(100+S); %everyting raw
-  set(gcf,'Position',[443 206 577 746]);
+%for S=[1:22];
+  for S=[1];
+  for R=[1:3];
+  fig=figure(100+S); set(gcf,'Position',[1    472   1440    437]);
   for M=[1:M_R(R)];
-      subplot(3,2, 1+(R-1)*2)
+      subplot(1,3,R)
 
-        plot(1,v1_MULTIYEAR_H{S,R,M},'x'); hold on
-        plot(2,v1_MULTIYEAR_F{S,R,M},'s'); hold on
+         plot(v2_MULTIYEAR_F{S,R,M}/v2_MULTIYEAR_H{S,R,M},v1_MULTIYEAR_F{S,R,M}-v1_MULTIYEAR_H{S,R,M},'s b'); hold on
 
-          %xlim([0 3]);          ylim([12 20]);
+          xlim([ 0.8 1.2]);          
+          ylim([-1.0 3.5]);
           title([LOCtxt{S},' RCP',RCPtxt{R},' N:',num2str(M_R(R))])
-          ylabel('t (degC)')
-          set(gca,'xtick',[1 2],'xticklabel',{'P0','P2'})
+          ylabel('P2-P0 t (degC)')
+          xlabel('P2/P0 R (-)')
 		set(gca,'Fontsize',FUTA)
 
 %-------> Adding table
           if (M==1)
-            text(0.1,0.8,'Max :','units','normalized'); text(0.3,0.8,num2str(round(v1_STAT(S,R,1)*100)/100),'units','normalized');
-            text(0.1,0.7,'Mean:','units','normalized'); text(0.3,0.7,num2str(round(v1_STAT(S,R,2)*100)/100),'units','normalized');
-            text(0.1,0.6,'Min :','units','normalized'); text(0.3,0.6,num2str(round(v1_STAT(S,R,3)*100)/100),'units','normalized');
-            text(0.1,0.4,'P75 :','units','normalized'); text(0.3,0.4,num2str(round(v1_STAT(S,R,4)*100)/100),'units','normalized');
-            text(0.1,0.3,'P50 :','units','normalized'); text(0.3,0.3,num2str(round(v1_STAT(S,R,5)*100)/100),'units','normalized');
-            text(0.1,0.2,'P25 :','units','normalized'); text(0.3,0.2,num2str(round(v1_STAT(S,R,6)*100)/100),'units','normalized');
+            text(0.1,0.95,'Max :','units','normalized'); text(0.3,0.95,num2str(round(v1_STAT(S,R,1)*100)/100),'units','normalized');
+            text(0.1,0.90,'Mean:','units','normalized'); text(0.3,0.90,num2str(round(v1_STAT(S,R,2)*100)/100),'units','normalized');
+            text(0.1,0.85,'Min :','units','normalized'); text(0.3,0.85,num2str(round(v1_STAT(S,R,3)*100)/100),'units','normalized');
+            text(0.1,0.15,'P75 :','units','normalized'); text(0.3,0.15,num2str(round(v1_STAT(S,R,4)*100)/100),'units','normalized');
+            text(0.1,0.10,'P50 :','units','normalized'); text(0.3,0.10,num2str(round(v1_STAT(S,R,5)*100)/100),'units','normalized');
+            text(0.1,0.05,'P25 :','units','normalized'); text(0.3,0.05,num2str(round(v1_STAT(S,R,6)*100)/100),'units','normalized');
           end
 
-      subplot(3,2, 2+(R-1)*2)
-
-        plot(1,v2_MULTIYEAR_H{S,R,M},'x'); hold on
-        plot(2,v2_MULTIYEAR_F{S,R,M},'s'); hold on
-
-          %xlim([0 3]);          ylim([200 2600]); %grid on
-          title([LOCtxt{S},' RCP',RCPtxt{R},' N:',num2str(M_R(R))])
-          ylabel('R (mm)')
-          set(gca,'xtick',[1 2],'xticklabel',{'P0','P2'})
-		set(gca,'Fontsize',FUTA)
-
 %-------> Adding table
           if (M==1)
-            text(0.1,0.8,'Max :','units','normalized'); text(0.3,0.8,num2str(round(v2_STAT(S,R,1)*100)/100),'units','normalized');
-            text(0.1,0.7,'Mean:','units','normalized'); text(0.3,0.7,num2str(round(v2_STAT(S,R,2)*100)/100),'units','normalized');
-            text(0.1,0.6,'Min :','units','normalized'); text(0.3,0.6,num2str(round(v2_STAT(S,R,3)*100)/100),'units','normalized');
-            text(0.1,0.4,'P75 :','units','normalized'); text(0.3,0.4,num2str(round(v2_STAT(S,R,4)*100)/100),'units','normalized');
-            text(0.1,0.3,'P50 :','units','normalized'); text(0.3,0.3,num2str(round(v2_STAT(S,R,5)*100)/100),'units','normalized');
-            text(0.1,0.2,'P25 :','units','normalized'); text(0.3,0.2,num2str(round(v2_STAT(S,R,6)*100)/100),'units','normalized');
+            text(0.7,0.95,'Max :','units','normalized'); text(0.9,0.95,num2str(round(v2_STAT(S,R,1)*100)/100),'units','normalized');
+            text(0.7,0.90,'Mean:','units','normalized'); text(0.9,0.90,num2str(round(v2_STAT(S,R,2)*100)/100),'units','normalized');
+            text(0.7,0.85,'Min :','units','normalized'); text(0.9,0.85,num2str(round(v2_STAT(S,R,3)*100)/100),'units','normalized');
+            text(0.7,0.15,'P75 :','units','normalized'); text(0.9,0.15,num2str(round(v2_STAT(S,R,4)*100)/100),'units','normalized');
+            text(0.7,0.10,'P50 :','units','normalized'); text(0.9,0.10,num2str(round(v2_STAT(S,R,5)*100)/100),'units','normalized');
+            text(0.7,0.05,'P25 :','units','normalized'); text(0.9,0.05,num2str(round(v2_STAT(S,R,6)*100)/100),'units','normalized');
           end
 
   end
   filenamePNG=['STATION_',num2str(S),'_MeanChange.png'];
-  print(fig,filenamePNG,'-dpng','-S500,750');
+  print(fig,filenamePNG,'-dpng','-S1000,500');
 end
 end
 
