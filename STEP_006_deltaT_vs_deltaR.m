@@ -9,8 +9,8 @@ FUTA=16;
 
 %------------------------------------------------------------------------------
 
-%M_R=[14 22 39]; %number of models in RCP2.6, RCP4.5 and RCP8.5
- M_R=[13 18 35]; %number of models in RCP2.6, RCP4.5 and RCP8.5 ali bez DHMZ
+ M_R=[14 22 39]; %number of models in RCP2.6, RCP4.5 and RCP8.5
+%M_R=[13 18 35]; %number of models in RCP2.6, RCP4.5 and RCP8.5 ali bez DHMZ
 
      LOCtxt{ 1}='Zagreb';
      LOCtxt{ 2}='Krapina';
