@@ -46,7 +46,8 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
     models=importdata(['./models_RCP',RCPtxt{RCP},'.txt']);
     nMOD=size(models,1);
 
-    for STT=[1:22];    %1:22
+%   for STT=[1:22];    %1:22
+    for STT=[1];       %1:22
     for VAR=[1:2];     %-->tas, pr
             niz_za_analizu       =NaN;
             for MOD=[1:nMOD];
@@ -76,7 +77,7 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
 
 %------------------------------------ RAW: P0 ------------------------------------------------------------
 
-            figRAW=figure(STT+VAR*10^2); set(gcf,'Position',[ 1    181   1440    900]);
+            figRAW(RCP)=figure(STT+VAR*10^2); set(gcf,'Position',[ 1    181   1440    900]);
 
             subplot(2,3,RCP)
                 skup=squeeze(MATRIX_MOD(RCP,STT,VAR,1:nMOD,1:12));
@@ -106,11 +107,11 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                             if (VAR==2); ylim([0 300]); ylabel('std R (mm)','Fontsize',FUTA);     end
                             title([LOCtxt{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
                             set(gca,'Fontsize',FUTA)
-               if (RCP==3);
-                  filenamePNG=['evaluation_',LOCtxt{STT},'_',VARtxt{VAR},'_P0_RAW.png'];
-                  print(figRAW,filenamePNG,'-dpng','-S1300,750');
-                  close(figRAW)
-               end
+%               if (RCP==3);
+                  filenamePNG=['RCP',num2str(RCP),'_evaluation_',LOCtxt{STT},'_',VARtxt{VAR},'_P0_RAW.png'];
+                  print(figRAW(RCP),filenamePNG,'-dpng','-S1300,750');
+                  close(figRAW(RCP))
+%               end
 
 %------------------------------------ RAW: P2-----------------------------------------------------------------
 
@@ -143,15 +144,15 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                             if (VAR==2); ylim([0 300]); ylabel('std R (mm)','Fontsize',FUTA);     end
                             title([LOCtxt{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
 			    set(gca,'Fontsize',FUTA)
-               if (RCP==3);
-                  filenamePNG=['future_',LOCtxt{STT},'_',VARtxt{VAR},'_P2_RAW.png'];
-                  print(P2_figRAW,filenamePNG,'-dpng','-S1300,750');
-                  close(P2_figRAW)
-               end
+%               if (RCP==3);
+%                  filenamePNG=['future_',LOCtxt{STT},'_',VARtxt{VAR},'_P2_RAW.png'];
+%                  print(P2_figRAW,filenamePNG,'-dpng','-S1300,750');
+%                  close(P2_figRAW)
+%               end
 
 %------------------------------------ RAW: CV VERSION, PRECIPITATION ONLY, P0 ----------------------------
         if (VAR==2);
-            figRAW_CV=figure(STT+VAR*10^4); set(gcf,'Position',[ 1    181   1440    900]);
+            figRAW_CV(RCP)=figure(STT+VAR*10^4); set(gcf,'Position',[ 1    181   1440    900]);
             subplot(2,3,RCP)
                 skup=squeeze(MATRIX_MOD(RCP,STT,VAR,1:nMOD,1:12));
                 ens_mean=mean(skup);
@@ -178,15 +179,15 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                             ylim([0      3]); ylabel('cv R','Fontsize',FUTA);
                             title([LOCtxt{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
 			                      set(gca,'Fontsize',FUTA)			
-               if (RCP==3);
-                  filenamePNG=['evaluation_',LOCtxt{STT},'_',VARtxt{VAR},'_P0_RAWvsOBS_CVVversion.png'];
-                  print(figRAW_CV,filenamePNG,'-dpng','-S1300,750');
-                  close(figRAW_CV)
-               end
+%               if (RCP==3);
+                  filenamePNG=['RCP',num2str(RCP),'_evaluation_',LOCtxt{STT},'_',VARtxt{VAR},'_P0_RAWvsOBS_CVVversion.png'];
+                  print(figRAW_CV(RCP),filenamePNG,'-dpng','-S1300,750');
+                  close(figRAW_CV(RCP))
+%               end
          end
 %------------------------------------ RAW: P2 vs. P0-------------------------------------------
 
-            P2vsP0_figRAW=figure(STT+VAR*10^5); set(gcf,'Position',[ 1    181   1440    900]);
+            P2vsP0_figRAW(RCP)=figure(STT+VAR*10^5); set(gcf,'Position',[ 1    181   1440    900]);
             subplot(2,3,RCP)
                 skup1=squeeze(   MATRIX_MOD(RCP,STT,VAR,1:nMOD,1:12));
                 skup2=squeeze(P2_MATRIX_MOD(RCP,STT,VAR,1:nMOD,1:12));
@@ -229,11 +230,11 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                             if (VAR==2); ylim([0   4]); ylabel('P2/P0 std R','Fontsize',FUTA);     end
                             title([LOCtxt{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
 			    set(gca,'Fontsize',FUTA)
-               if (RCP==3);
-                  filenamePNG=['P2vsP0_',LOCtxt{STT},'_',VARtxt{VAR},'.png'];
-                  print(P2vsP0_figRAW,filenamePNG,'-dpng','-S1300,750');
-                  close(P2vsP0_figRAW)
-               end
+%               if (RCP==3);
+                  filenamePNG=['RCP',num2str(RCP),'_P2vsP0_',LOCtxt{STT},'_',VARtxt{VAR},'.png'];
+                  print(P2vsP0_figRAW(RCP),filenamePNG,'-dpng','-S1300,750');
+                  close(P2vsP0_figRAW(RCP))
+%               end
 
 end %variable      %-->tas, pr
 end %station    
