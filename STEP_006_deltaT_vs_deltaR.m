@@ -48,8 +48,8 @@ for R=[1:3];
 for M=[1:M_R(R)];
 
   %--------> MONTHLY MEANS and MONTHLY SUM
-  v1_MON{S,R,M}=load(['./PODACI_raw/STATION_',num2str(S),'_MOD_',num2str(M),'_RCP',num2str(R),'_VAR1_ORIG.txt']);
-  v2_MON{S,R,M}=load(['./PODACI_raw/STATION_',num2str(S),'_MOD_',num2str(M),'_RCP',num2str(R),'_VAR2_ORIG.txt']);
+  v1_MON{S,R,M}=load(['./PODACI_txt/STATION_',num2str(S),'_MOD_',num2str(M),'_RCP',num2str(R),'_VAR1_ORIG.txt']);
+  v2_MON{S,R,M}=load(['./PODACI_txt/STATION_',num2str(S),'_MOD_',num2str(M),'_RCP',num2str(R),'_VAR2_ORIG.txt']);
 
   %--------> ANNUAL MEANS and ANNUAL SUM
   clear temp; temp=v1_MON{S,R,M}; v1_YEAR{S,R,M}=mean(reshape(temp,12,100));
