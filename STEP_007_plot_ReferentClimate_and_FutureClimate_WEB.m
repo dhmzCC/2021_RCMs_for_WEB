@@ -47,7 +47,7 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
     nMOD=size(models,1);
 
 %   for STT=[1:22];    %1:22
-    for STT=[1];       %1:22
+    for STT=[16:20];     
     for VAR=[1:2];     %-->tas, pr
             niz_za_analizu       =NaN;
             for MOD=[1:nMOD];
