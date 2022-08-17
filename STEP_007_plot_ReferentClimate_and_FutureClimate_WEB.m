@@ -46,8 +46,7 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
     models=importdata(['./models_RCP',RCPtxt{RCP},'.txt']);
     nMOD=size(models,1);
 
-%   for STT=[1:22];    %1:22
-    for STT=[16:20];     
+   for STT=[1:20];    %1:22
     for VAR=[1:2];     %-->tas, pr
             niz_za_analizu       =NaN;
             for MOD=[1:nMOD];
@@ -107,6 +106,7 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                             if (VAR==2); ylim([0 300]); ylabel('std R (mm)','Fontsize',FUTA);     end
                             title([LOCtxt{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
                             set(gca,'Fontsize',FUTA)
+                            text(0.05,0.05,'\copyright DHMZ','units','normalized','Fontsize',FUTA);
 %               if (RCP==3);
                   filenamePNG=['RCP',num2str(RCP),'_evaluation_',LOCtxt{STT},'_',VARtxt{VAR},'_P0_RAW.png'];
                   print(figRAW(RCP),filenamePNG,'-dpng','-S1300,750');
@@ -179,6 +179,7 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                             ylim([0      3]); ylabel('cv R','Fontsize',FUTA);
                             title([LOCtxt{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
 			                      set(gca,'Fontsize',FUTA)			
+                            text(0.05,0.05,'\copyright DHMZ','units','normalized','Fontsize',FUTA);
 %               if (RCP==3);
                   filenamePNG=['RCP',num2str(RCP),'_evaluation_',LOCtxt{STT},'_',VARtxt{VAR},'_P0_RAWvsOBS_CVVversion.png'];
                   print(figRAW_CV(RCP),filenamePNG,'-dpng','-S1300,750');
@@ -229,6 +230,7 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                             if (VAR==1); ylim([0.4 2]); ylabel('P2/P0 std t','Fontsize',FUTA); end
                             if (VAR==2); ylim([0   4]); ylabel('P2/P0 std R','Fontsize',FUTA);     end
                             title([LOCtxt{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
+                            text(0.05,0.05,'\copyright DHMZ','units','normalized','Fontsize',FUTA);
 			    set(gca,'Fontsize',FUTA)
 %               if (RCP==3);
                   filenamePNG=['RCP',num2str(RCP),'_P2vsP0_',LOCtxt{STT},'_',VARtxt{VAR},'.png'];
