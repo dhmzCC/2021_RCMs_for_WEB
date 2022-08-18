@@ -85,8 +85,8 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                 ens_mini=min(skup);
                 ens_maxi=max(skup);
                     c=errorbar([1:12],ens_mean,ens_devc           ); hold on; set(c,'Linewidth',2);
-                    plot(    [1:12],ens_mini,'g'); hold on
-                    plot(    [1:12],ens_maxi,'g'); hold on
+%                    plot(    [1:12],ens_mini,'g'); hold on
+%                    plot(    [1:12],ens_maxi,'g'); hold on
                             xlim([0.5 12.5]);           xlabel('vrijeme (mjesec)','Fontsize',FUTA)
                             if (VAR==1); ylim([-10  35]); ylabel('t (degC)','Fontsize',FUTA); end
                             if (VAR==2); ylim([0 400]); ylabel('R (mm)','Fontsize',FUTA);   end
@@ -99,8 +99,8 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                 ens_mini=min(skup);
                 ens_maxi=max(skup);
                     c=errorbar([1:12],ens_mean,ens_devc           ); hold on; set(c,'Linewidth',2);
-                    plot(    [1:12],ens_mini,'g'); hold on
-                    plot(    [1:12],ens_maxi,'g'); hold on
+%                    plot(    [1:12],ens_mini,'g'); hold on
+%                    plot(    [1:12],ens_maxi,'g'); hold on
                             xlim([0.5 12.5]);           xlabel('vrijeme (mjesec)','Fontsize',FUTA)
                             if (VAR==1); ylim([0   5]); ylabel('std t (degC)','Fontsize',FUTA); end
                             if (VAR==2); ylim([0 300]); ylabel('std R (mm)','Fontsize',FUTA);     end
@@ -123,8 +123,8 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                 ens_mini=min(skup);
                 ens_maxi=max(skup);
                     c=errorbar([1:12],ens_mean,ens_devc           ); hold on; set(c,'Linewidth',2);
-                    plot(    [1:12],ens_mini,'g'); hold on
-                    plot(    [1:12],ens_maxi,'g'); hold on
+ %                   plot(    [1:12],ens_mini,'g'); hold on
+ %                   plot(    [1:12],ens_maxi,'g'); hold on
                             xlim([0.5 12.5]);           xlabel('vrijeme (mjesec)','Fontsize',FUTA)
                             if (VAR==1); ylim([-10  35]); ylabel('t (degC)','Fontsize',FUTA); end
                             if (VAR==2); ylim([0 400]); ylabel('R (mm)','Fontsize',FUTA);     end
@@ -137,8 +137,8 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                 ens_mini=min(skup);
                 ens_maxi=max(skup);
                     c=errorbar([1:12],ens_mean,ens_devc           ); hold on; set(c,'Linewidth',2);
-                    plot(    [1:12],ens_mini,'g'); hold on
-                    plot(    [1:12],ens_maxi,'g'); hold on
+ %                   plot(    [1:12],ens_mini,'g'); hold on
+ %                   plot(    [1:12],ens_maxi,'g'); hold on
                             xlim([0.5 12.5]);           xlabel('vrijeme (mjesec)','Fontsize',FUTA)
                             if (VAR==1); ylim([0   5]); ylabel('std t (degC)','Fontsize',FUTA); end
                             if (VAR==2); ylim([0 300]); ylabel('std R (mm)','Fontsize',FUTA);     end
@@ -157,8 +157,8 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                 skup=squeeze(MATRIX_MOD(RCP,STT,VAR,1:nMOD,1:12));
                 ens_mean=mean(skup);
                 ens_devc=std(skup);
-                ens_mini=min(skup);
-                ens_maxi=max(skup);
+ %               ens_mini=min(skup);
+ %               ens_maxi=max(skup);
                     c=errorbar([1:12],ens_mean,ens_devc           ); hold on; set(c,'Linewidth',2);
                     plot(    [1:12],ens_mini,'g'); hold on
                     plot(    [1:12],ens_maxi,'g'); hold on
@@ -173,8 +173,8 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                 ens_mini=min(skup);
                 ens_maxi=max(skup);
                     c=errorbar([1:12],ens_mean,ens_devc           ); hold on; set(c,'Linewidth',2);
-                    plot(    [1:12],ens_mini,'g'); hold on
-                    plot(    [1:12],ens_maxi,'g'); hold on
+ %                   plot(    [1:12],ens_mini,'g'); hold on
+ %                   plot(    [1:12],ens_maxi,'g'); hold on
                             xlim([0.5 12.5]); xlabel('vrijeme (mjesec)','Fontsize',FUTA)
                             ylim([0      3]); ylabel('cv R','Fontsize',FUTA);
                             title([LOCtxt{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
@@ -208,8 +208,8 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
 
                     plot([0.5 12.5],[0 0],'r--'); hold on
                     c=errorbar([1:12],ens_mean,ens_devc           ); hold on; set(c,'Linewidth',2);
-                    plot(    [1:12],ens_mini,'g'); hold on
-                    plot(    [1:12],ens_maxi,'g'); hold on
+ %                   plot(    [1:12],ens_mini,'g'); hold on
+ %                   plot(    [1:12],ens_maxi,'g'); hold on
                             xlim([0.5 12.5]);           xlabel('vrijeme (mjesec)','Fontsize',FUTA)
                             if (VAR==1); ylim([-3    6]); ylabel('P2-P0 t (degC)','Fontsize',FUTA); end
                             if (VAR==2); ylim([-100 150]); ylabel('(P2-P0)/P0 R (%)','Fontsize',FUTA);     end
@@ -224,8 +224,8 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                 ens_maxi= max(skup2./skup1);
                     plot([0.5 12.5],[1 1],'r--'); hold on
                     c=errorbar([1:12],ens_mean,ens_devc           ); hold on; set(c,'Linewidth',2);
-                    plot(    [1:12],ens_mini,'g'); hold on
-                    plot(    [1:12],ens_maxi,'g'); hold on
+ %                   plot(    [1:12],ens_mini,'g'); hold on
+ %                   plot(    [1:12],ens_maxi,'g'); hold on
                             xlim([0.5 12.5]);           xlabel('vrijeme (mjesec)','Fontsize',FUTA)
                             if (VAR==1); ylim([0.4 2]); ylabel('P2/P0 std t','Fontsize',FUTA); end
                             if (VAR==2); ylim([0   4]); ylabel('P2/P0 std R','Fontsize',FUTA);     end
