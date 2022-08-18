@@ -5,6 +5,9 @@ tic
 pkg load netcdf
 pkg load statistics
 
+
+set(0, 'DefaultTextInterpreter', 'none')
+
 %-------------------------------------------------------------------------------------------------------------
 
 VARtxt{1}='tas';      VARtxtWITHunits{1}='t (st. C)';
@@ -36,6 +39,29 @@ LOCtxt{19}='Dubrovnik';
 LOCtxt{20}='Cakovec';
 LOCtxt{21}='Djurdjenovac';
 LOCtxt{22}='Nasice';
+
+NASLOV{ 1}='Zagreb';
+NASLOV{ 2}='Krapina';
+NASLOV{ 3}='Sisak';
+NASLOV{ 4}='Karlovac';
+NASLOV{ 5}='Varazdin';
+NASLOV{ 6}='Koprivnica';
+NASLOV{ 7}='Bjelovar';
+NASLOV{ 8}='Rijeka';
+NASLOV{ 9}='Gospic';
+NASLOV{10}='Virovitica';
+NASLOV{11}='Pozega';
+NASLOV{12}='Slavonski Brod';
+NASLOV{13}='Zadar';
+NASLOV{14}='Osijek';
+NASLOV{15}='Sibenik';
+NASLOV{16}='Vukovar';
+NASLOV{17}='Split';
+NASLOV{18}='Pazin';
+NASLOV{19}='Dubrovnik';
+NASLOV{20}='Cakovec';
+NASLOV{21}='Djurdjenovac';
+NASLOV{22}='Nasice';
 
 FUTA=18;
 
@@ -90,7 +116,7 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                             xlim([0.5 12.5]);           xlabel('vrijeme (mjesec)','Fontsize',FUTA)
                             if (VAR==1); ylim([-10  35]); ylabel('t (degC)','Fontsize',FUTA); end
                             if (VAR==2); ylim([0 400]); ylabel('R (mm)','Fontsize',FUTA);   end
-                            title([LOCtxt{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
+                            title([NASLOV{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
                   	    set(gca,'Fontsize',FUTA)
             subplot(2,3,RCP+3)
                 skup=squeeze(MATRIX_MOD_STD(RCP,STT,VAR,1:nMOD,1:12));
@@ -104,7 +130,7 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                             xlim([0.5 12.5]);           xlabel('vrijeme (mjesec)','Fontsize',FUTA)
                             if (VAR==1); ylim([0   5]); ylabel('std t (degC)','Fontsize',FUTA); end
                             if (VAR==2); ylim([0 300]); ylabel('std R (mm)','Fontsize',FUTA);     end
-                            title([LOCtxt{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
+                            title([NASLOV{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
                             set(gca,'Fontsize',FUTA)
                             text(0.05,0.05,'\copyright DHMZ','units','normalized','Fontsize',FUTA);
 %               if (RCP==3);
@@ -128,7 +154,7 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                             xlim([0.5 12.5]);           xlabel('vrijeme (mjesec)','Fontsize',FUTA)
                             if (VAR==1); ylim([-10  35]); ylabel('t (degC)','Fontsize',FUTA); end
                             if (VAR==2); ylim([0 400]); ylabel('R (mm)','Fontsize',FUTA);     end
-                            title([LOCtxt{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
+                            title([NASLOV{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
 			    set(gca,'Fontsize',FUTA)
             subplot(2,3,RCP+3)
                 skup=squeeze(P2_MATRIX_MOD_STD(RCP,STT,VAR,1:nMOD,1:12));
@@ -142,7 +168,7 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                             xlim([0.5 12.5]);           xlabel('vrijeme (mjesec)','Fontsize',FUTA)
                             if (VAR==1); ylim([0   5]); ylabel('std t (degC)','Fontsize',FUTA); end
                             if (VAR==2); ylim([0 300]); ylabel('std R (mm)','Fontsize',FUTA);     end
-                            title([LOCtxt{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
+                            title([NASLOV{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
 			    set(gca,'Fontsize',FUTA)
 %               if (RCP==3);
 %                  filenamePNG=['future_',LOCtxt{STT},'_',VARtxt{VAR},'_P2_RAW.png'];
@@ -164,7 +190,7 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
 %                    plot(    [1:12],ens_maxi,'g'); hold on
                             xlim([0.5 12.5]); xlabel('vrijeme (mjesec)','Fontsize',FUTA)
                             ylim([0 400   ]); ylabel('R (mm)','Fontsize',FUTA);
-                            title([LOCtxt{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
+                            title([NASLOV{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
 			    set(gca,'Fontsize',FUTA)
              subplot(2,3,RCP+3)
                 skup=squeeze(MATRIX_MOD_CVV(RCP,STT,VAR,1:nMOD,1:12));
@@ -177,7 +203,7 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
  %                   plot(    [1:12],ens_maxi,'g'); hold on
                             xlim([0.5 12.5]); xlabel('vrijeme (mjesec)','Fontsize',FUTA)
                             ylim([0      3]); ylabel('cv R','Fontsize',FUTA);
-                            title([LOCtxt{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
+                            title([NASLOV{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
 			                      set(gca,'Fontsize',FUTA)			
                             text(0.05,0.05,'\copyright DHMZ','units','normalized','Fontsize',FUTA);
 %               if (RCP==3);
@@ -213,7 +239,7 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                             xlim([0.5 12.5]);           xlabel('vrijeme (mjesec)','Fontsize',FUTA)
                             if (VAR==1); ylim([-3    6]); ylabel('P2-P0 t (degC)','Fontsize',FUTA); end
                             if (VAR==2); ylim([-100 150]); ylabel('(P2-P0)/P0 R (%)','Fontsize',FUTA);     end
-                            title([LOCtxt{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
+                            title([NASLOV{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
 			    set(gca,'Fontsize',FUTA)
             subplot(2,3,RCP+3)
                 skup1=squeeze(   MATRIX_MOD_STD(RCP,STT,VAR,1:nMOD,1:12));
@@ -229,7 +255,7 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                             xlim([0.5 12.5]);           xlabel('vrijeme (mjesec)','Fontsize',FUTA)
                             if (VAR==1); ylim([0.4 2]); ylabel('P2/P0 std t','Fontsize',FUTA); end
                             if (VAR==2); ylim([0   4]); ylabel('P2/P0 std R','Fontsize',FUTA);     end
-                            title([LOCtxt{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
+                            title([NASLOV{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
                             text(0.05,0.05,'\copyright DHMZ','units','normalized','Fontsize',FUTA);
 			    set(gca,'Fontsize',FUTA)
 %               if (RCP==3);
