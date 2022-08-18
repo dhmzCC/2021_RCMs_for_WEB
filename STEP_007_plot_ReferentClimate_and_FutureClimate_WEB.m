@@ -160,8 +160,8 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
  %               ens_mini=min(skup);
  %               ens_maxi=max(skup);
                     c=errorbar([1:12],ens_mean,ens_devc           ); hold on; set(c,'Linewidth',2);
-                    plot(    [1:12],ens_mini,'g'); hold on
-                    plot(    [1:12],ens_maxi,'g'); hold on
+%                    plot(    [1:12],ens_mini,'g'); hold on
+%                    plot(    [1:12],ens_maxi,'g'); hold on
                             xlim([0.5 12.5]); xlabel('vrijeme (mjesec)','Fontsize',FUTA)
                             ylim([0 400   ]); ylabel('R (mm)','Fontsize',FUTA);
                             title([LOCtxt{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
