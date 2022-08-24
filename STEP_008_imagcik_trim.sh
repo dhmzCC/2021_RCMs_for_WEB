@@ -3,8 +3,11 @@ rm -vf *pr_P0_RAW.png
 datoteke=$(ls *.png)
 
 for D in ${datoteke}; do
-    convert ${D} -trim +repage trim_${D} 
+    cp ${D} radna.png
+    rm -vf ${D}
+    convert radna.png -trim +repage ${D} 
+    rm -vf radna.png
 done
 
-mv trim*png ./PODACI_png_20220818
-rm -vf *.png
+mv     *png ./PODACI_png_20220818
+#rm -vf *.png
