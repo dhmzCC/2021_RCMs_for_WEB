@@ -6,7 +6,7 @@ pkg load netcdf
 pkg load statistics
 
 
-set(0, 'DefaultTextInterpreter', 'none')
+%set(0, 'DefaultTextInterpreter', 'none')
 
 %-------------------------------------------------------------------------------------------------------------
 
@@ -133,6 +133,7 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                             title([NASLOV{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
                             set(gca,'Fontsize',FUTA)
                             text(0.05,0.05,'\copyright DHMZ','units','normalized','Fontsize',FUTA);
+                            text(0.65,0.05,'v2022-08-24','units','normalized','Fontsize',FUTA-4);
 %               if (RCP==3);
                   filenamePNG=['RCP',num2str(RCP),'_evaluation_',LOCtxt{STT},'_',VARtxt{VAR},'_P0_RAW.png'];
                   print(figRAW(RCP),filenamePNG,'-dpng','-S1300,750');
@@ -206,6 +207,7 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                             title([NASLOV{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
 			                      set(gca,'Fontsize',FUTA)			
                             text(0.05,0.05,'\copyright DHMZ','units','normalized','Fontsize',FUTA);
+                            text(0.65,0.05,'v2022-08-24','units','normalized','Fontsize',FUTA-6);
 %               if (RCP==3);
                   filenamePNG=['RCP',num2str(RCP),'_evaluation_',LOCtxt{STT},'_',VARtxt{VAR},'_P0_RAWvsOBS_CVVversion.png'];
                   print(figRAW_CV(RCP),filenamePNG,'-dpng','-S1300,750');
@@ -257,6 +259,7 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                             if (VAR==2); ylim([0   4]); ylabel('P2/P0 std R','Fontsize',FUTA);     end
                             title([NASLOV{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
                             text(0.05,0.05,'\copyright DHMZ','units','normalized','Fontsize',FUTA);
+                            text(0.65,0.05,'v2022-08-24','units','normalized','Fontsize',FUTA-4);
 			    set(gca,'Fontsize',FUTA)
 %               if (RCP==3);
                   filenamePNG=['RCP',num2str(RCP),'_P2vsP0_',LOCtxt{STT},'_',VARtxt{VAR},'.png'];
