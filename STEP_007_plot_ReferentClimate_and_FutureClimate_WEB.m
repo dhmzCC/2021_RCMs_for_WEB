@@ -5,9 +5,6 @@ tic
 pkg load netcdf
 pkg load statistics
 
-
-%set(0, 'DefaultTextInterpreter', 'none')
-
 %-------------------------------------------------------------------------------------------------------------
 
 VARtxt{1}='tas';      VARtxtWITHunits{1}='t (st. C)';
@@ -72,7 +69,8 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
     models=importdata(['./models_RCP',RCPtxt{RCP},'.txt']);
     nMOD=size(models,1);
 
-   for STT=[1:20];    %1:22
+   %for STT=[1:20];    %1:22
+   for STT=[1];
     for VAR=[1:2];     %-->tas, pr
             niz_za_analizu       =NaN;
             for MOD=[1:nMOD];
@@ -111,13 +109,13 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                 ens_mini=min(skup);
                 ens_maxi=max(skup);
                     c=errorbar([1:12],ens_mean,ens_devc           ); hold on; set(c,'Linewidth',2);
-%                    plot(    [1:12],ens_mini,'g'); hold on
-%                    plot(    [1:12],ens_maxi,'g'); hold on
                             xlim([0.5 12.5]);           xlabel('vrijeme (mjesec)','Fontsize',FUTA)
+                            set(gca,'xtick',[1:12],'xticklabel',num2str([1:12]'));
                             if (VAR==1); ylim([-10  35]); ylabel('t (degC)','Fontsize',FUTA); end
                             if (VAR==2); ylim([0 400]); ylabel('R (mm)','Fontsize',FUTA);   end
-                            title([NASLOV{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
+                            title([NASLOV{STT},' RCP',RCPtxt{RCP}],'Fontsize',FUTA)
                   	    set(gca,'Fontsize',FUTA)
+		            text(0.70,0.95,'\copyright DHMZ','units','normalized','Fontsize',FUTA);
             subplot(2,3,RCP+3)
                 skup=squeeze(MATRIX_MOD_STD(RCP,STT,VAR,1:nMOD,1:12));
                 ens_mean=mean(skup);
@@ -125,20 +123,16 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                 ens_mini=min(skup);
                 ens_maxi=max(skup);
                     c=errorbar([1:12],ens_mean,ens_devc           ); hold on; set(c,'Linewidth',2);
-%                    plot(    [1:12],ens_mini,'g'); hold on
-%                    plot(    [1:12],ens_maxi,'g'); hold on
                             xlim([0.5 12.5]);           xlabel('vrijeme (mjesec)','Fontsize',FUTA)
+                            set(gca,'xtick',[1:12],'xticklabel',num2str([1:12]'));
                             if (VAR==1); ylim([0   5]); ylabel('std t (degC)','Fontsize',FUTA); end
                             if (VAR==2); ylim([0 300]); ylabel('std R (mm)','Fontsize',FUTA);     end
-                            title([NASLOV{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
+                            title([NASLOV{STT},' RCP',RCPtxt{RCP}],'Fontsize',FUTA)
                             set(gca,'Fontsize',FUTA)
-                            text(0.05,0.05,'\copyright DHMZ','units','normalized','Fontsize',FUTA);
-                            text(0.65,0.05,'v2022-08-24','units','normalized','Fontsize',FUTA-6);
-%               if (RCP==3);
+                            text(0.85,0.03,'v2022-08-29','units','normalized','Fontsize',FUTA-12);
                   filenamePNG=['RCP',num2str(RCP),'_P0_',LOCtxt{STT},'_',VARtxt{VAR},'.png'];
                   print(figRAW(RCP),filenamePNG,'-dpng','-S1300,750');
                   close(figRAW(RCP))
-%               end
 
 %------------------------------------ RAW: P2-----------------------------------------------------------------
 
@@ -150,12 +144,11 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                 ens_mini=min(skup);
                 ens_maxi=max(skup);
                     c=errorbar([1:12],ens_mean,ens_devc           ); hold on; set(c,'Linewidth',2);
- %                   plot(    [1:12],ens_mini,'g'); hold on
- %                   plot(    [1:12],ens_maxi,'g'); hold on
                             xlim([0.5 12.5]);           xlabel('vrijeme (mjesec)','Fontsize',FUTA)
+                            set(gca,'xtick',[1:12],'xticklabel',num2str([1:12]'));
                             if (VAR==1); ylim([-10  35]); ylabel('t (degC)','Fontsize',FUTA); end
                             if (VAR==2); ylim([0 400]); ylabel('R (mm)','Fontsize',FUTA);     end
-                            title([NASLOV{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
+                            title([NASLOV{STT},' RCP',RCPtxt{RCP}],'Fontsize',FUTA)
 			    set(gca,'Fontsize',FUTA)
             subplot(2,3,RCP+3)
                 skup=squeeze(P2_MATRIX_MOD_STD(RCP,STT,VAR,1:nMOD,1:12));
@@ -164,12 +157,11 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                 ens_mini=min(skup);
                 ens_maxi=max(skup);
                     c=errorbar([1:12],ens_mean,ens_devc           ); hold on; set(c,'Linewidth',2);
- %                   plot(    [1:12],ens_mini,'g'); hold on
- %                   plot(    [1:12],ens_maxi,'g'); hold on
                             xlim([0.5 12.5]);           xlabel('vrijeme (mjesec)','Fontsize',FUTA)
+                            set(gca,'xtick',[1:12],'xticklabel',num2str([1:12]'));
                             if (VAR==1); ylim([0   5]); ylabel('std t (degC)','Fontsize',FUTA); end
                             if (VAR==2); ylim([0 300]); ylabel('std R (mm)','Fontsize',FUTA);     end
-                            title([NASLOV{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
+                            title([NASLOV{STT},' RCP',RCPtxt{RCP}],'Fontsize',FUTA)
 			    set(gca,'Fontsize',FUTA)
 %               if (RCP==3);
 %                  filenamePNG=['future_',LOCtxt{STT},'_',VARtxt{VAR},'_P2_RAW.png'];
@@ -184,15 +176,13 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                 skup=squeeze(MATRIX_MOD(RCP,STT,VAR,1:nMOD,1:12));
                 ens_mean=mean(skup);
                 ens_devc=std(skup);
- %               ens_mini=min(skup);
- %               ens_maxi=max(skup);
                     c=errorbar([1:12],ens_mean,ens_devc           ); hold on; set(c,'Linewidth',2);
-%                    plot(    [1:12],ens_mini,'g'); hold on
-%                    plot(    [1:12],ens_maxi,'g'); hold on
                             xlim([0.5 12.5]); xlabel('vrijeme (mjesec)','Fontsize',FUTA)
                             ylim([0 400   ]); ylabel('R (mm)','Fontsize',FUTA);
-                            title([NASLOV{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
+                            title([NASLOV{STT},' RCP',RCPtxt{RCP}],'Fontsize',FUTA)
 			    set(gca,'Fontsize',FUTA)
+		            text(0.70,0.95,'\copyright DHMZ','units','normalized','Fontsize',FUTA);
+                            set(gca,'xtick',[1:12],'xticklabel',num2str([1:12]'));
              subplot(2,3,RCP+3)
                 skup=squeeze(MATRIX_MOD_CVV(RCP,STT,VAR,1:nMOD,1:12));
                 ens_mean=mean(skup);
@@ -200,19 +190,15 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                 ens_mini=min(skup);
                 ens_maxi=max(skup);
                     c=errorbar([1:12],ens_mean,ens_devc           ); hold on; set(c,'Linewidth',2);
- %                   plot(    [1:12],ens_mini,'g'); hold on
- %                   plot(    [1:12],ens_maxi,'g'); hold on
                             xlim([0.5 12.5]); xlabel('vrijeme (mjesec)','Fontsize',FUTA)
                             ylim([0      3]); ylabel('cv R','Fontsize',FUTA);
-                            title([NASLOV{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
-			                      set(gca,'Fontsize',FUTA)			
-                            text(0.05,0.05,'\copyright DHMZ','units','normalized','Fontsize',FUTA);
-                            text(0.65,0.05,'v2022-08-24','units','normalized','Fontsize',FUTA-6);
-%               if (RCP==3);
+                            title([NASLOV{STT},' RCP',RCPtxt{RCP}],'Fontsize',FUTA)
+                            set(gca,'Fontsize',FUTA)			
+                            text(0.85,0.03,'v2022-08-29','units','normalized','Fontsize',FUTA-12);
+                            set(gca,'xtick',[1:12],'xticklabel',num2str([1:12]'));
                   filenamePNG=['RCP',num2str(RCP),'_P0_',LOCtxt{STT},'_',VARtxt{VAR},'.png'];
                   print(figRAW_CV(RCP),filenamePNG,'-dpng','-S1300,750');
                   close(figRAW_CV(RCP))
-%               end
          end
 %------------------------------------ RAW: P2 vs. P0-------------------------------------------
 
@@ -236,13 +222,13 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
 
                     plot([0.5 12.5],[0 0],'r--'); hold on
                     c=errorbar([1:12],ens_mean,ens_devc           ); hold on; set(c,'Linewidth',2);
- %                   plot(    [1:12],ens_mini,'g'); hold on
- %                   plot(    [1:12],ens_maxi,'g'); hold on
                             xlim([0.5 12.5]);           xlabel('vrijeme (mjesec)','Fontsize',FUTA)
-                            if (VAR==1); ylim([-3    6]); ylabel('P2-P0 t (degC)','Fontsize',FUTA); end
+                            if (VAR==1); ylim([-3    6]); ylabel('P2-P0 t (degC)','Fontsize',FUTA);        end
                             if (VAR==2); ylim([-100 150]); ylabel('(P2-P0)/P0 R (%)','Fontsize',FUTA);     end
-                            title([NASLOV{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
+                            title([NASLOV{STT},' RCP',RCPtxt{RCP}],'Fontsize',FUTA)
 			    set(gca,'Fontsize',FUTA)
+			    text(0.70,0.95,'\copyright DHMZ','units','normalized','Fontsize',FUTA);
+                            set(gca,'xtick',[1:12],'xticklabel',num2str([1:12]'));
             subplot(2,3,RCP+3)
                 skup1=squeeze(   MATRIX_MOD_STD(RCP,STT,VAR,1:nMOD,1:12));
                 skup2=squeeze(P2_MATRIX_MOD_STD(RCP,STT,VAR,1:nMOD,1:12));
@@ -252,20 +238,16 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                 ens_maxi= max(skup2./skup1);
                     plot([0.5 12.5],[1 1],'r--'); hold on
                     c=errorbar([1:12],ens_mean,ens_devc           ); hold on; set(c,'Linewidth',2);
- %                   plot(    [1:12],ens_mini,'g'); hold on
- %                   plot(    [1:12],ens_maxi,'g'); hold on
                             xlim([0.5 12.5]);           xlabel('vrijeme (mjesec)','Fontsize',FUTA)
                             if (VAR==1); ylim([0.4 2]); ylabel('P2/P0 std t','Fontsize',FUTA); end
                             if (VAR==2); ylim([0   4]); ylabel('P2/P0 std R','Fontsize',FUTA);     end
-                            title([NASLOV{STT},' RCP',RCPtxt{RCP},' N:',num2str(nMOD)],'Fontsize',FUTA)
-                            text(0.05,0.05,'\copyright DHMZ','units','normalized','Fontsize',FUTA);
-                            text(0.65,0.05,'v2022-08-24','units','normalized','Fontsize',FUTA-6);
+                            title([NASLOV{STT},' RCP',RCPtxt{RCP}],'Fontsize',FUTA)
+                            text(0.85,0.03,'v2022-08-29','units','normalized','Fontsize',FUTA-12);
+                            set(gca,'xtick',[1:12],'xticklabel',num2str([1:12]'));
 			    set(gca,'Fontsize',FUTA)
-%               if (RCP==3);
                   filenamePNG=['RCP',num2str(RCP),'_P2vsP0_',LOCtxt{STT},'_',VARtxt{VAR},'.png'];
                   print(P2vsP0_figRAW(RCP),filenamePNG,'-dpng','-S1300,750');
                   close(P2vsP0_figRAW(RCP))
-%               end
 
 end %variable      %-->tas, pr
 end %station    
