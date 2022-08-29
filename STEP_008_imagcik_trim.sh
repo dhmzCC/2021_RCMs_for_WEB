@@ -5,9 +5,10 @@ datoteke=$(ls *.png)
 for D in ${datoteke}; do
     cp ${D} radna.png
     rm -vf ${D}
-    convert radna.png -trim +repage ${D} 
+    convert radna.png -trim -bordercolor white -border 15 +repage ${D} 
     rm -vf radna.png
 done
 
-mv     *png ./PODACI_png_20220818
+mkdir -p PODACI_png_20220829
+mv     *png ./PODACI_png_20220829
 #rm -vf *.png
