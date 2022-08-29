@@ -1,0 +1,33 @@
+----------------------------------------------------
+Ako je varijabla: oborina
+----------------------------------------------------
+
+Slika 1: Referentna klima prema simulacijama regionalnih klimatskih modela za odabrani scenarij. Gornji panel: srednja mjesečna količina oborine.
+Donji panel: koeficijent varijacije mjesečne količine oborine. Puna linija: srednjak skupa analiziranih simulacija; Stupić: standardna devijacija unutar skupa analiziranih simulacija.  Razdoblje: 1981.-2010. 
+
+Slika 2: Signal klimatskih promjena za odabrani scenarij. Gornji panel: relativna promjena između razdoblja 2041.-2070. i 1981.-2010. Donji panel: omjer standardnih devijacija za razdoblje 2041.-2070. u odnosu na razdoblje 1981.-2010. Puna linija: srednjak skupa analiziranih simulacija; Stupić: standardna devijacija unutar skupa analiziranih simulacija.
+
+----------------------------------------------------
+Ako je varijabla: temperatura
+----------------------------------------------------
+
+Slika 1: Referentna klima prema simulacijama regionalnih klimatskih modela za odabrani scenarij. Gornji panel: srednja mjesečna temperatura zraka na 2 m.
+Donji panel: standardna devijacija srednje mjesečne temperature zraka na 2 m. Puna linija: srednjak skupa analiziranih simulacija; Stupić: standardna devijacija unutar skupa analiziranih simulacija.  Razdoblje: 1981.-2010. 
+
+Slika 2: Signal klimatskih promjena za odabrani scenarij. Gornji panel: promjena između razdoblja 2041.-2070. i 1981.-2010. Donji panel: omjer standardnih devijacija za razdoblje 2041.-2070. u odnosu na razdoblje 1981.-2010. Puna linija: srednjak skupa analiziranih simulacija; Stupić: standardna devijacija unutar skupa analiziranih simulacija.
+
+
+----------------------------------------------------
+Zajednički tekst:
+----------------------------------------------------
+
+Simulacije regionalnih klimatskih modela korišteni u ovoj analizi proizašli su iz (1) simulacija obavljenim za potrebe izrade Strategije prilagodbe klimatskim promjenama u Republici Hrvatskoj za razdoblje do 2040. godine s pogledom na 2070. godinu (MZOE, 2017, http://prilagodba-klimi.hr/; NN 46/2020; podaci dostupni na repozitorij.meteo.hr), (2) simulacija obavljenim za potrebe istraživanja unutar Sektora za meteorološka istraživanja i razvoj na DHMZ-u i (3) simulacija dostupnih kroz međunarodnu incijativu EURO-CORDEX (euro-cordex.net). 
+
+Korištene simulacije regionalnih klimatskih modela su analizirane za razdoblje 1971. do 2070. na prostornoj rezoluciji 12.5 km. Kao rubni uvjeti korišteni su rezultati CMIP5 globalnih klimatskih modela (Taylor i sur., 2012). Do simulirane 2005. godine globalni klimatski modeli i regionalni klimatski modeli koriste izmjerene koncentracije stakleničkih plinova, a za razdoblje poslije 2005. pretpostavljena su tri IPCC scenarija: RCP2.6, RCP4.5 i RCP8.5 (Moss i sur., 2010). 
+
+Ovisno o pojedinom scenariju koncentracija, za analizu je bio dostupan različit broj modela: za scenarij RCP2.6 14 modela, za scenarij RCP4.5 22 modela te za scenarij RCP8.5 39 modela.
+
+
+Moss, R.H., J.A. Edmonds, K.A. Hibbard, M.R. Manning, S.K. Rose, D.P. van Vuuren, T.R. Carter, S. Emori, M. Kainuma, T. Kram, G.A. Meehl, J.F.B. Mitchell, N. Nakicenovic, K. Riahi, S.J. Smith, R.J. Stouffer, A.M. Thomson, J.P. Weyant, T.J. Wilbanks, 2010: The next generation of scenarios for climate change research and assessment. Nature 463, 747–756
+
+Taylor, K.E., R.J. Stouffer, G.A. Meehl, 2012: An Overview of CMIP5 and the Experiment Design. Bulletin of the American Meteorological Society, 93(4), 485-498
