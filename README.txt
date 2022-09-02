@@ -1,4 +1,12 @@
-Sadrzaj pojedine txt datoteke je definiran informacijama sadrzanim u nazivu txt datoteke:
+Sadrzaj pojedine txt datoteke je definiran informacijama sadrzanim u nazivu txt datoteke.
+
+Na primjer, iz naziva datoteke 
+
+        STATION9_MOD38_RCP3_VAR1_ORIG.txt 
+        
+možemo saznati da je riječ od velicini srednje temperature zraka (VAR1), uz pretpostavku scenarija RCP8.5 (RCP3) prema simulacijama modela CNRM-CERFACS-CNRM-CM5_rcp85_r1i1p1_DHMZ-RegCM42_v1 (MOD38) za lokaciju Gospica (STATION9). Sve vrijednosti navedena četiri parametra u nazivu datoteku su definirane u nastavku.
+
+
 
 VAR (velicina): 
      1- srednja mjesecna temperatura zraka na 2m (mjerna jedinica: deg C). Razdoblje od siječnja 1971 do prosinca 2070.
@@ -100,7 +108,7 @@ MOD (model): pojedinačna kombinacija globalnog i regionalnog klimatskog modela.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------
 
-STATION (lokacija): 
+STATION (vrijednosti na lokacijama su dobivene bilinearnom interpolacijom sa četiri najbliže točke mreže klimatskog modela): 
 	1- Zagreb
         2- Krapina
         3- Sisak

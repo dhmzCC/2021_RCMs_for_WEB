@@ -69,12 +69,11 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
     models=importdata(['./models_RCP',RCPtxt{RCP},'.txt']);
     nMOD=size(models,1);
 
-    %for STT=[1:20];    %1:22
-    for STT=[1];
+    for STT=[1:20];    %1:22
     for VAR=[1:2];     %-->tas, pr
             niz_za_analizu       =NaN;
             for MOD=[1:nMOD];
-                model_MMYYYY=load(['./PODACI_txt/STATION',num2str(STT),'_MOD_',num2str(MOD),'_RCP',num2str(RCP),'_VAR',num2str(VAR),'_ORIG.txt']);
+                model_MMYYYY=load(['./PODACI_txt/STATION',num2str(STT),'_MOD',num2str(MOD),'_RCP',num2str(RCP),'_VAR',num2str(VAR),'_ORIG.txt']);
 
                 model_P0=model_MMYYYY(120+1:120+12*30)';       %---> 1981-2010
                 vremenski_niz=reshape(model_P0,12,30)';

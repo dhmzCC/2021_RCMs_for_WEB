@@ -9,6 +9,6 @@ for D in ${datoteke}; do
     rm -vf radna.png
 done
 
-mkdir -p PODACI_png_20220829
-mv     *png ./PODACI_png_20220829
+mkdir -p PODACI_png_20220902
+mv     *png ./PODACI_png_20220902
 #rm -vf *.png
