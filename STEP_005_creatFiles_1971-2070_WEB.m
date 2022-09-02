@@ -91,12 +91,12 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                 % SAVE TXT TIMESERIES
                 %------------------------
                     if (VAR==1)
-                        filename=['STATION_',num2str(STT),'_MOD_',num2str(MOD),'_RCP',num2str(RCP),'_VAR',num2str(VAR),'_ORIG.txt'];
+                        filename=['STATION',num2str(STT),'_MOD',num2str(MOD),'_RCP',num2str(RCP),'_VAR',num2str(VAR),'_ORIG.txt'];
                         clear zapis; zapis=model_MMYYYY-273.15;
                         save(filename,'-ascii','zapis');
                     end
                     if (VAR==2)
-                        filename=['STATION_',num2str(STT),'_MOD_',num2str(MOD),'_RCP',num2str(RCP),'_VAR',num2str(VAR),'_ORIG.txt'];
+                        filename=['STATION',num2str(STT),'_MOD',num2str(MOD),'_RCP',num2str(RCP),'_VAR',num2str(VAR),'_ORIG.txt'];
                         clear zapis; zapis=model_MMYYYY*24*60*60.*repmat([31 28 31 30 31 30 31 31 30 31 30 31]',100,1);
                         save(filename,'-ascii','zapis');
                     end

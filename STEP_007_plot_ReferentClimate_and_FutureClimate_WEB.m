@@ -69,11 +69,12 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
     models=importdata(['./models_RCP',RCPtxt{RCP},'.txt']);
     nMOD=size(models,1);
 
-    for STT=[1:20];    %1:22
+    %for STT=[1:20];    %1:22
+    for STT=[1];
     for VAR=[1:2];     %-->tas, pr
             niz_za_analizu       =NaN;
             for MOD=[1:nMOD];
-                model_MMYYYY=load(['./PODACI_txt/STATION_',num2str(STT),'_MOD_',num2str(MOD),'_RCP',num2str(RCP),'_VAR',num2str(VAR),'_ORIG.txt']);
+                model_MMYYYY=load(['./PODACI_txt/STATION',num2str(STT),'_MOD_',num2str(MOD),'_RCP',num2str(RCP),'_VAR',num2str(VAR),'_ORIG.txt']);
 
                 model_P0=model_MMYYYY(120+1:120+12*30)';       %---> 1981-2010
                 vremenski_niz=reshape(model_P0,12,30)';
@@ -110,7 +111,7 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                     c=errorbar([1:12],ens_mean,ens_devc           ); hold on; set(c,'Linewidth',2);
                             xlim([0.5 12.5]);           xlabel('vrijeme (mjesec)','Fontsize',FUTA)
                             set(gca,'xtick',[1:12],'xticklabel',num2str([1:12]'));
-                            if (VAR==1); ylim([-10  35]); ylabel('t (degC)','Fontsize',FUTA+2); end
+                            if (VAR==1); ylim([-10  35]); ylabel('t (^oC)','Fontsize',FUTA+2); end
                             if (VAR==2); ylim([0 400]); ylabel('R (mm)','Fontsize',FUTA+2);     end
                             title([NASLOV{STT},' RCP',RCPtxt{RCP}],'Fontsize',FUTA)
                   	    set(gca,'Fontsize',FUTA)
@@ -124,11 +125,11 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                     c=errorbar([1:12],ens_mean,ens_devc           ); hold on; set(c,'Linewidth',2);
                             xlim([0.5 12.5]);           xlabel('vrijeme (mjesec)','Fontsize',FUTA)
                             set(gca,'xtick',[1:12],'xticklabel',num2str([1:12]'));
-                            if (VAR==1); ylim([0   5]); ylabel('std t (degC)','Fontsize',FUTA+2); end
+                            if (VAR==1); ylim([0   5]); ylabel('std t (^oC)','Fontsize',FUTA+2); end
                             if (VAR==2); ylim([0 300]); ylabel('std R (mm)','Fontsize',FUTA+2);   end
                             title([NASLOV{STT},' RCP',RCPtxt{RCP}],'Fontsize',FUTA)
                             set(gca,'Fontsize',FUTA)
-                            text(0.85,0.03,'v2022-08-29','units','normalized','Fontsize',FUTA-12);
+                            text(0.85,0.03,'v2022-09-02','units','normalized','Fontsize',FUTA-12);
                   filenamePNG=['RCP',num2str(RCP),'_P0_',LOCtxt{STT},'_',VARtxt{VAR},'.png'];
                   print(figRAW(RCP),filenamePNG,'-dpng','-S1300,750');
                   close(figRAW(RCP))
@@ -145,7 +146,7 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                     c=errorbar([1:12],ens_mean,ens_devc           ); hold on; set(c,'Linewidth',2);
                             xlim([0.5 12.5]);           xlabel('vrijeme (mjesec)','Fontsize',FUTA)
                             set(gca,'xtick',[1:12],'xticklabel',num2str([1:12]'));
-                            if (VAR==1); ylim([-10  35]); ylabel('t (degC)','Fontsize',FUTA+2); end
+                            if (VAR==1); ylim([-10  35]); ylabel('t (^oC)','Fontsize',FUTA+2); end
                             if (VAR==2); ylim([0 400]); ylabel('R (mm)','Fontsize',FUTA+2);     end
                             title([NASLOV{STT},' RCP',RCPtxt{RCP}],'Fontsize',FUTA)
 			    set(gca,'Fontsize',FUTA)
@@ -158,7 +159,7 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                     c=errorbar([1:12],ens_mean,ens_devc           ); hold on; set(c,'Linewidth',2);
                             xlim([0.5 12.5]);           xlabel('vrijeme (mjesec)','Fontsize',FUTA)
                             set(gca,'xtick',[1:12],'xticklabel',num2str([1:12]'));
-                            if (VAR==1); ylim([0   5]); ylabel('std t (degC)','Fontsize',FUTA+2); end
+                            if (VAR==1); ylim([0   5]); ylabel('std t (^oC)','Fontsize',FUTA+2); end
                             if (VAR==2); ylim([0 300]); ylabel('std R (mm)','Fontsize',FUTA+2);   end
                             title([NASLOV{STT},' RCP',RCPtxt{RCP}],'Fontsize',FUTA)
 			    set(gca,'Fontsize',FUTA)
@@ -193,7 +194,7 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                             ylim([0      3]); ylabel('cv R (-)','Fontsize',FUTA+2);
                             title([NASLOV{STT},' RCP',RCPtxt{RCP}],'Fontsize',FUTA)
                             set(gca,'Fontsize',FUTA)			
-                            text(0.85,0.03,'v2022-08-29','units','normalized','Fontsize',FUTA-12);
+                            text(0.85,0.03,'v2022-09-02','units','normalized','Fontsize',FUTA-12);
                             set(gca,'xtick',[1:12],'xticklabel',num2str([1:12]'));
                   filenamePNG=['RCP',num2str(RCP),'_P0_',LOCtxt{STT},'_',VARtxt{VAR},'.png'];
                   print(figRAW_CV(RCP),filenamePNG,'-dpng','-S1300,750');
@@ -222,7 +223,7 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                     plot([0.5 12.5],[0 0],'r--'); hold on
                     c=errorbar([1:12],ens_mean,ens_devc           ); hold on; set(c,'Linewidth',2);
                             xlim([0.5 12.5]);           xlabel('vrijeme (mjesec)','Fontsize',FUTA)
-                            if (VAR==1); ylim([-3    6]); ylabel('P2-P0 t (degC)','Fontsize',FUTA+2);        end
+                            if (VAR==1); ylim([-3    6]); ylabel('P2-P0 t (^oC)','Fontsize',FUTA+2);        end
                             if (VAR==2); ylim([-100 150]); ylabel('(P2-P0)/P0 R (%)','Fontsize',FUTA+2);     end
                             title([NASLOV{STT},' RCP',RCPtxt{RCP}],'Fontsize',FUTA)
 			    set(gca,'Fontsize',FUTA)
@@ -241,7 +242,7 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                             if (VAR==1); ylim([0.4 2]); ylabel('P2/P0 std t (-)','Fontsize',FUTA+2); end
                             if (VAR==2); ylim([0   4]); ylabel('P2/P0 std R (-)','Fontsize',FUTA+2); end
                             title([NASLOV{STT},' RCP',RCPtxt{RCP}],'Fontsize',FUTA)
-                            text(0.85,0.03,'v2022-08-29','units','normalized','Fontsize',FUTA-12);
+                            text(0.85,0.03,'v2022-09-02','units','normalized','Fontsize',FUTA-12);
                             set(gca,'xtick',[1:12],'xticklabel',num2str([1:12]'));
 			    set(gca,'Fontsize',FUTA)
                   filenamePNG=['RCP',num2str(RCP),'_P2vsP0_',LOCtxt{STT},'_',VARtxt{VAR},'.png'];
