@@ -21,13 +21,22 @@ Slika 2: Signal klimatskih promjena za odabrani scenarij. Gornji panel: promjena
 Zajednički tekst:
 ----------------------------------------------------
 
-Simulacije regionalnih klimatskih modela korišteni u ovoj analizi proizašli su iz (1) simulacija obavljenim za potrebe izrade Strategije prilagodbe klimatskim promjenama u Republici Hrvatskoj za razdoblje do 2040. godine s pogledom na 2070. godinu (MZOE, 2017, http://prilagodba-klimi.hr/; NN 46/2020; podaci dostupni na repozitorij.meteo.hr), (2) simulacija obavljenim za potrebe istraživanja unutar Sektora za meteorološka istraživanja i razvoj na DHMZ-u i (3) simulacija dostupnih kroz međunarodnu incijativu EURO-CORDEX (euro-cordex.net). 
+Simulacije regionalnih klimatskih modela korišteni u ovoj analizi proizašli su iz: (1) simulacija obavljenim za potrebe izrade Strategije prilagodbe klimatskim promjenama u Republici Hrvatskoj za razdoblje do 2040. godine s pogledom na 2070. godinu (MZOE, 2017, prilagodba-klimi.hr; NN 46/2020; podaci dostupni na repozitorij.meteo.hr), (2) simulacija obavljenim za potrebe istraživanja unutar Sektora za meteorološka istraživanja i razvoj na DHMZ-u i (3) simulacija dostupnih kroz međunarodnu incijativu EURO-CORDEX (euro-cordex.net).
 
-Korištene simulacije regionalnih klimatskih modela su analizirane za razdoblje 1971. do 2070. na prostornoj rezoluciji 12.5 km. Kao rubni uvjeti korišteni su rezultati CMIP5 globalnih klimatskih modela (Taylor i sur., 2012). Do simulirane 2005. godine globalni klimatski modeli i regionalni klimatski modeli koriste izmjerene koncentracije stakleničkih plinova, a za razdoblje poslije 2005. pretpostavljena su tri IPCC scenarija: RCP2.6, RCP4.5 i RCP8.5 (Moss i sur., 2010). 
+Korištene simulacije regionalnih klimatskih modela su analizirane za razdoblje 1971. do 2070. na prostornoj rezoluciji 12.5 km. Kao rubni uvjeti korišteni su rezultati CMIP5 globalnih klimatskih modela (Taylor i sur., 2012). Do simulirane 2005. godine globalni klimatski modeli i regionalni klimatski modeli koriste izmjerene koncentracije stakleničkih plinova, a za razdoblje poslije 2005. pretpostavljena su tri IPCC scenarija: RCP2.6, RCP4.5 i RCP8.5 (Moss i sur., 2010).
 
-Ovisno o pojedinom scenariju koncentracija, za analizu je bio dostupan različit broj modela: za scenarij RCP2.6 14 modela, za scenarij RCP4.5 22 modela te za scenarij RCP8.5 39 modela.
+Ovisno o pojedinom scenariju koncentracija, za analizu je bio dostupan različit broj modela: za scenarij RCP2.6 14 modela, za scenarij RCP4.5 22 modela te za scenarij RCP8.5 39 modela. Razlika u primijenjenim modelima za pojedini scenarij dovodi i do manjih razlika u vrijednostima godišnjih hodova za referentnu klimu.
 
+Osnovno ograničenje prikazanih rezultata očituje se u sustavnim pogreškama regionalnih klimatskih modela u odnosu na mjerenja i na njima bazirane klimatske podloge kao što su Klimatski atlas Hrvatske (URL: https://klima.hr/razno/publikacije/klimatski_atlas_hrvatske.pdf). Sustavne pogreške korištenih modela u ovoj analizi dokumentirane su u npr. Güttler i sur. (2020) i Vautard i sur. (2021). Sustavne pogrešake za simulacije referentne klime (u ovoj analizi za razdoblje 1981.-2010.) ograničavaju primjenu modela u većoj ili manjoj mjeri ovisno o potrebama korisnika. Npr., informacije o trendovima i razlikama između buduće i sadašnje klime mogu se koristiti u područjima primjene no prije korištenja rezultata regionalnih klimatskih modela kao ulaza u modele utjecaja potrebno je provesti tzv. statističko uklanjanje sustavnih pogrešaka (npr. Gajić Čapka i sur., 2018).Za sva daljnja pitanja i konzultacije obratite se na dhmz@cirus.dhz.hr.
+
+
+
+Gajić-Čapka, M., I. Güttler, K. Cindrić, Č. Branković, 2018: Observed and simulated climate and climate change in the lower Neretva river basin.  J. Water Clim. Change, 9 (1): 124–136
+
+Güttler, I., T. Stilinović, L. Srnec, Č. Branković, E. Coppola, F. Giorgi, 2020: Performance of RegCM4 simulations over Croatia and adjacent climate regions. Int. J. Climatol., 40: 5843–5862
 
 Moss, R.H., J.A. Edmonds, K.A. Hibbard, M.R. Manning, S.K. Rose, D.P. van Vuuren, T.R. Carter, S. Emori, M. Kainuma, T. Kram, G.A. Meehl, J.F.B. Mitchell, N. Nakicenovic, K. Riahi, S.J. Smith, R.J. Stouffer, A.M. Thomson, J.P. Weyant, T.J. Wilbanks, 2010: The next generation of scenarios for climate change research and assessment. Nature 463, 747–756
 
-Taylor, K.E., R.J. Stouffer, G.A. Meehl, 2012: An Overview of CMIP5 and the Experiment Design. Bulletin of the American Meteorological Society, 93(4), 485-498
+Taylor, K.E., R.J. Stouffer, G.A. Meehl, 2012: An Overview of CMIP5 and the Experiment Design. Bulletin of the American Meteorological Society, 93(4), 485–498
+
+Vautard, R., N. Kadygrov, C. Iles, F. Boberg, E. Buonomo, K. Bülow i sur., 2021: Evaluation of the large EURO-CORDEX regional climate model ensemble. Journal of Geophysical Research: Atmospheres, 126, e2019JD032344
