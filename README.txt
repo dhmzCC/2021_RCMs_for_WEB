@@ -1,16 +1,18 @@
-Sadrzaj pojedine txt datoteke je definiran informacijama sadrzanim u nazivu txt datoteke.
+Sadržaj pojedine txt datoteke je definiran informacijama sadržanim u nazivu txt datoteke.
 
 Na primjer, iz naziva datoteke 
 
         STATION9_MOD38_RCP3_VAR1_ORIG.txt 
         
-možemo saznati da je riječ od velicini srednje temperature zraka (VAR1), uz pretpostavku scenarija RCP8.5 (RCP3) prema simulacijama modela CNRM-CERFACS-CNRM-CM5_rcp85_r1i1p1_DHMZ-RegCM42_v1 (MOD38) za lokaciju Gospica (STATION9). Sve vrijednosti navedena četiri parametra u nazivu datoteku su definirane u nastavku.
+možemo saznati da je riječ od veličini srednje temperature zraka (VAR1), uz pretpostavku scenarija RCP8.5 (RCP3) prema simulacijama modela 
+CNRM-CERFACS-CNRM-CM5_rcp85_r1i1p1_DHMZ-RegCM42_v1 (MOD38) za lokaciju Gospića (STATION9). ORIG označava tip vremenskih nizova: izvorni 
+rezultati klimatskih modela bez dodatnih obrada. Sve vrijednosti navedena četiri parametra u nazivu datoteke su definirane u nastavku.
 
 
 
-VAR (velicina): 
-     1- srednja mjesecna temperatura zraka na 2m (mjerna jedinica: deg C). Razdoblje od siječnja 1971 do prosinca 2070.
-     2- ukupna mjesecna kolicina oborine (mjerna jedinica: mm)             Razdoblje od siječnja 1971 do prosinca 2070.
+VAR (veličina): 
+     1- srednja mjesečna temperatura zraka na 2m (mjerna jedinica: deg C); Razdoblje od siječnja 1971 do prosinca 2070.
+     2- ukupna mjesečna kolicina oborine (mjerna jedinica: mm);            Razdoblje od siječnja 1971 do prosinca 2070.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -21,18 +23,18 @@ RCP (scenarij):
 
 -----------------------------------------------------------------------------------------------------------------------------------------------
 
-MOD (model): pojedinačna kombinacija globalnog i regionalnog klimatskog modela. Razlicito za pojedinačni RCP scenarij.
+MOD (model): pojedinačna kombinacija globalnog i regionalnog klimatskog modela. Različito za pojedinačni RCP scenarij.
 
 	RCP2.6
-    	1- CNRM-CERFACS-CNRM-CM5_rcp26_r1i1p1_KNMI-RACMO22E_v2
-	2- ICHEC-EC-EARTH_rcp26_r12i1p1_CLMcom-CCLM4-8-17_v1
-	3- ICHEC-EC-EARTH_rcp26_r12i1p1_KNMI-RACMO22E_v1
-	4- ICHEC-EC-EARTH_rcp26_r12i1p1_SMHI-RCA4_v1
-	5- ICHEC-EC-EARTH_rcp26_r3i1p1_DMI-HIRHAM5_v2
-	6- IPSL-IPSL-CM5A-LR_rcp26_r1i1p1_GERICS-REMO2015_v1
-	7- MOHC-HadGEM2-ES_rcp26_r1i1p1_KNMI-RACMO22E_v2
-	8- MOHC-HadGEM2-ES_rcp26_r1i1p1_SMHI-RCA4_v1
-	9- MPI-M-MPI-ESM-LR_rcp26_r1i1p1_KNMI-RACMO22E_v1
+    	1-  CNRM-CERFACS-CNRM-CM5_rcp26_r1i1p1_KNMI-RACMO22E_v2
+	2-  ICHEC-EC-EARTH_rcp26_r12i1p1_CLMcom-CCLM4-8-17_v1
+	3-  ICHEC-EC-EARTH_rcp26_r12i1p1_KNMI-RACMO22E_v1
+	4-  ICHEC-EC-EARTH_rcp26_r12i1p1_SMHI-RCA4_v1
+	5-  ICHEC-EC-EARTH_rcp26_r3i1p1_DMI-HIRHAM5_v2
+	6-  IPSL-IPSL-CM5A-LR_rcp26_r1i1p1_GERICS-REMO2015_v1
+	7-  MOHC-HadGEM2-ES_rcp26_r1i1p1_KNMI-RACMO22E_v2
+	8-  MOHC-HadGEM2-ES_rcp26_r1i1p1_SMHI-RCA4_v1
+	9-  MPI-M-MPI-ESM-LR_rcp26_r1i1p1_KNMI-RACMO22E_v1
 	10- MPI-M-MPI-ESM-LR_rcp26_r1i1p1_SMHI-RCA4_v1a
 	11- NCC-NorESM1-M_rcp26_r1i1p1_GERICS-REMO2015_v1
 	12- NCC-NorESM1-M_rcp26_r1i1p1_SMHI-RCA4_v1
@@ -41,15 +43,15 @@ MOD (model): pojedinačna kombinacija globalnog i regionalnog klimatskog modela.
 
 
 	RCP4.5
-	1- CNRM-CERFACS-CNRM-CM5_rcp45_r1i1p1_CLMcom-CCLM4-8-17_v1
-	2- CNRM-CERFACS-CNRM-CM5_rcp45_r1i1p1_KNMI-RACMO22E_v2
-	3- CNRM-CERFACS-CNRM-CM5_rcp45_r1i1p1_SMHI-RCA4_v1
-	4- ICHEC-EC-EARTH_rcp45_r12i1p1_CLMcom-CCLM4-8-17_v1
-	5- ICHEC-EC-EARTH_rcp45_r12i1p1_KNMI-RACMO22E_v1
-	6- ICHEC-EC-EARTH_rcp45_r12i1p1_SMHI-RCA4_v1
-	7- ICHEC-EC-EARTH_rcp45_r1i1p1_KNMI-RACMO22E_v1
-	8- ICHEC-EC-EARTH_rcp45_r3i1p1_DMI-HIRHAM5_v2
-	9- IPSL-IPSL-CM5A-MR_rcp45_r1i1p1_SMHI-RCA4_v1
+	1-  CNRM-CERFACS-CNRM-CM5_rcp45_r1i1p1_CLMcom-CCLM4-8-17_v1
+	2-  CNRM-CERFACS-CNRM-CM5_rcp45_r1i1p1_KNMI-RACMO22E_v2
+	3-  CNRM-CERFACS-CNRM-CM5_rcp45_r1i1p1_SMHI-RCA4_v1
+	4-  ICHEC-EC-EARTH_rcp45_r12i1p1_CLMcom-CCLM4-8-17_v1
+	5-  ICHEC-EC-EARTH_rcp45_r12i1p1_KNMI-RACMO22E_v1
+	6-  ICHEC-EC-EARTH_rcp45_r12i1p1_SMHI-RCA4_v1
+	7-  ICHEC-EC-EARTH_rcp45_r1i1p1_KNMI-RACMO22E_v1
+	8-  ICHEC-EC-EARTH_rcp45_r3i1p1_DMI-HIRHAM5_v2
+	9-  IPSL-IPSL-CM5A-MR_rcp45_r1i1p1_SMHI-RCA4_v1
 	10- MOHC-HadGEM2-ES_rcp45_r1i1p1_CLMcom-CCLM4-8-17_v1
 	11- MOHC-HadGEM2-ES_rcp45_r1i1p1_DMI-HIRHAM5_v2
 	12- MOHC-HadGEM2-ES_rcp45_r1i1p1_KNMI-RACMO22E_v2
@@ -66,15 +68,15 @@ MOD (model): pojedinačna kombinacija globalnog i regionalnog klimatskog modela.
 
 	
 	RCP8.5
-	1- CNRM-CERFACS-CNRM-CM5_rcp85_r1i1p1_CLMcom-CCLM4-8-17_v1
-	2- CNRM-CERFACS-CNRM-CM5_rcp85_r1i1p1_DMI-HIRHAM5_v2
-	3- CNRM-CERFACS-CNRM-CM5_rcp85_r1i1p1_KNMI-RACMO22E_v2
-	4- CNRM-CERFACS-CNRM-CM5_rcp85_r1i1p1_SMHI-RCA4_v1
-	5- ICHEC-EC-EARTH_rcp85_r12i1p1_CLMcom-CCLM4-8-17_v1
-	6- ICHEC-EC-EARTH_rcp85_r12i1p1_CLMcom-ETH-COSMO-crCLIM-v1-1_v1
-	7- ICHEC-EC-EARTH_rcp85_r12i1p1_DMI-HIRHAM5_v1
-	8- ICHEC-EC-EARTH_rcp85_r12i1p1_KNMI-RACMO22E_v1
-	9- ICHEC-EC-EARTH_rcp85_r12i1p1_SMHI-RCA4_v1
+	1-  CNRM-CERFACS-CNRM-CM5_rcp85_r1i1p1_CLMcom-CCLM4-8-17_v1
+	2-  CNRM-CERFACS-CNRM-CM5_rcp85_r1i1p1_DMI-HIRHAM5_v2
+	3-  CNRM-CERFACS-CNRM-CM5_rcp85_r1i1p1_KNMI-RACMO22E_v2
+	4-  CNRM-CERFACS-CNRM-CM5_rcp85_r1i1p1_SMHI-RCA4_v1
+	5-  ICHEC-EC-EARTH_rcp85_r12i1p1_CLMcom-CCLM4-8-17_v1
+	6-  ICHEC-EC-EARTH_rcp85_r12i1p1_CLMcom-ETH-COSMO-crCLIM-v1-1_v1
+	7-  ICHEC-EC-EARTH_rcp85_r12i1p1_DMI-HIRHAM5_v1
+	8-  ICHEC-EC-EARTH_rcp85_r12i1p1_KNMI-RACMO22E_v1
+	9-  ICHEC-EC-EARTH_rcp85_r12i1p1_SMHI-RCA4_v1
 	10- ICHEC-EC-EARTH_rcp85_r1i1p1_DMI-HIRHAM5_v1
 	11- ICHEC-EC-EARTH_rcp85_r1i1p1_KNMI-RACMO22E_v1
 	12- ICHEC-EC-EARTH_rcp85_r1i1p1_SMHI-RCA4_v1
@@ -109,26 +111,26 @@ MOD (model): pojedinačna kombinacija globalnog i regionalnog klimatskog modela.
 -----------------------------------------------------------------------------------------------------------------------------------------------
 
 STATION (vrijednosti na lokacijama su dobivene bilinearnom interpolacijom sa četiri najbliže točke mreže klimatskog modela): 
-	1- Zagreb
-        2- Krapina
-        3- Sisak
-        4- Karlovac
-        5- Varazdin
-        6- Koprivnica
-        7- Bjelovar
-        8- Rijeka
-        9- Gospic
+	1-  Zagreb
+        2-  Krapina
+        3-  Sisak
+        4-  Karlovac
+        5-  Varaždin
+        6-  Koprivnica
+        7-  Bjelovar
+        8-  Rijeka
+        9-  Gospić
         10- Virovitica
-        11- Pozega
+        11- Požega
         12- Slavonski Brod
         13- Zadar
         14- Osijek
-        15- Sibenik
+        15- Šibenik
         16- Vukovar
         17- Split
         18- Pazin
         19- Dubrovnik
-        20- Cakovec
+        20- Čakovec
 
 -----------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -136,5 +138,5 @@ Izvor: DHMZ (obrada), https://repozitorij.meteo.hr/ i https://cordex.org/data-ac
 
 -----------------------------------------------------------------------------------------------------------------------------------------------
 
-Verzija: 2022-08-29
+Verzija: 2022-09-12
 
