@@ -131,7 +131,7 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                             if (VAR==2); ylim([0 300]); ylabel('std R (mm)','Fontsize',FUTA+2);   end
                             title([NASLOV{STT},' RCP',RCPtxt{RCP}],'Fontsize',FUTA)
                             set(gca,'Fontsize',FUTA)
-                            text(0.85,0.03,'v2022-09-14','units','normalized','Fontsize',FUTA-9);
+                            text(0.75,0.03,'v2022-09-14','units','normalized','Fontsize',FUTA-9);
                   filenamePNG=['RCP',num2str(RCP),'_P0_',LOCtxt{STT},'_',VARtxt{VAR},'.png'];
                   print(figRAW(RCP),filenamePNG,'-dpng','-S1300,750');
                   close(figRAW(RCP))
@@ -196,7 +196,7 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                             ylim([0      3]); ylabel('cv R (-)','Fontsize',FUTA+2);
                             title([NASLOV{STT},' RCP',RCPtxt{RCP}],'Fontsize',FUTA)
                             set(gca,'Fontsize',FUTA)			
-                            text(0.85,0.03,'v2022-09-14','units','normalized','Fontsize',FUTA-9);
+                            text(0.75,0.03,'v2022-09-14','units','normalized','Fontsize',FUTA-9);
                             set(gca,'xtick',[1:12],'xticklabel',num2str([1:12]'));
                   filenamePNG=['RCP',num2str(RCP),'_P0_',LOCtxt{STT},'_',VARtxt{VAR},'.png'];
                   print(figRAW_CV(RCP),filenamePNG,'-dpng','-S1300,750');
@@ -244,7 +244,7 @@ for RCP=[1:3] ;                 %-->RCP2.6, RCP4.5, RCP8.5
                             if (VAR==1); ylim([0.4 2]); ylabel('P2/P0 std t (-)','Fontsize',FUTA+2); end
                             if (VAR==2); ylim([0   4]); ylabel('P2/P0 std R (-)','Fontsize',FUTA+2); end
                             title([NASLOV{STT},' RCP',RCPtxt{RCP}],'Fontsize',FUTA)
-                            text(0.85,0.03,'v2022-09-14','units','normalized','Fontsize',FUTA-9);
+                            text(0.75,0.03,'v2022-09-14','units','normalized','Fontsize',FUTA-9);
                             set(gca,'xtick',[1:12],'xticklabel',num2str([1:12]'));
 			    set(gca,'Fontsize',FUTA)
                   filenamePNG=['RCP',num2str(RCP),'_P2vsP0_',LOCtxt{STT},'_',VARtxt{VAR},'.png'];
